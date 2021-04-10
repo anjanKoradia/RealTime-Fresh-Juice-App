@@ -8,3 +8,7 @@
 
     - Dev dependancies
         - nodemon
+
+[.] Create express server & Set template engine
+
+    - Create a server.js file
