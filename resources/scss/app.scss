@@ -1,0 +1,103 @@
+@import "./variables";
+@import "./utility";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Lato", sans-serif;
+  color: $dark;
+}
+
+// -------------------- Navbar Styling Start --------------------
+.navbar {
+  font-weight: bold;
+
+  .navbar-brand {
+    font-size: 2.5rem;
+    color: $primary;
+  }
+  .nav-link {
+    font-size: 1.2rem;
+
+    &:hover {
+      color: $primary !important;
+      transition: $smooth;
+    }
+  }
+  .cart_btn {
+    padding: 0.25rem 0.8rem;
+  }
+}
+// -------------------- Navbar Styling End --------------------
+
+// -------------------- Hero Styling Start --------------------
+.hero {
+  background-color: $secondary;
+  height: calc(100vh - 86px);
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+  p {
+    font-size: 1.1rem;
+  }
+  .shop_now_btn {
+    font-size: 1.1rem;
+    padding: 0.3rem 1.2rem;
+  }
+}
+// -------------------- Hero Styling End --------------------
+
+// -------------------- Menu Styling Start --------------------
+.menu {
+  .product {
+    border: 2px solid $secondary;
+    border-radius: 5px;
+
+    > div {
+      border-top: 2px solid $secondary;
+      background-color: $secondary;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+  .add_to_cart_btn {
+    background-color: transparent;
+    color: $primary;
+    font-weight: bold;
+    border-radius: 50px;
+    border: 2px solid $primary;
+    padding: 0.2rem 1rem;
+
+    &:hover {
+      background-color: $primary;
+      border: 2px solid transparent;
+      color: $pure;
+      transition: $smooth;
+    }
+  }
+}
+// -------------------- Menu Styling End --------------------
+
+// -------------------- Footer Styling Start --------------------
+.footer {
+  background-color: $secondary;
+  padding: 1rem 0;
+  margin-top: 5rem;
+
+  .copy_write {
+    font-size: 1.1rem;
+
+    .github_link {
+      color: $primary !important;
+      text-decoration: none;
+    }
+  }
+}
+// -------------------- Footer Styling End --------------------

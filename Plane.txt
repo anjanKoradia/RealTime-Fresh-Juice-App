@@ -8,7 +8,18 @@
 
     - Dev dependancies
         - nodemon
+        - setup npm scripts
+            - "dev": "nodemon server.js",
 
 [.] Create express server & Set template engine
 
     - Create a server.js file
+
+[.] Install Laravel Mix
+
+    - npm install laravel-mix -D
+    - cp node_modules/laravel-mix/setup/webpack.mix.js ./
+    - setup js and scss path
+    - setup npm scripts
+
+[.] Create Home page using Html and Css

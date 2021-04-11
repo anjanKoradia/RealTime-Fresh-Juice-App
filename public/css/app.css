@@ -1,0 +1,117 @@
+hr {
+  width: 60px;
+  margin: 0.8rem auto 3rem auto;
+  border: 2px solid #fe7d00;
+}
+
+.btn_orange {
+  background-color: #fe7d00;
+  color: #fff;
+  border-radius: 50px;
+  border: 2px solid transparent;
+}
+
+.btn_orange:hover {
+  background-color: transparent;
+  border: 2px solid #fe7d00;
+  color: #fe7d00;
+  transition: all 0.3s ease-in-out;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: #232323;
+}
+
+.navbar {
+  font-weight: bold;
+}
+
+.navbar .navbar-brand {
+  font-size: 2.5rem;
+  color: #fe7d00;
+}
+
+.navbar .nav-link {
+  font-size: 1.2rem;
+}
+
+.navbar .nav-link:hover {
+  color: #fe7d00 !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar .cart_btn {
+  padding: 0.25rem 0.8rem;
+}
+
+.hero {
+  background-color: #f8f8f8;
+  height: calc(100vh - 86px);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+.hero .shop_now_btn {
+  font-size: 1.1rem;
+  padding: 0.3rem 1.2rem;
+}
+
+.menu .product {
+  border: 2px solid #f8f8f8;
+  border-radius: 5px;
+}
+
+.menu .product > div {
+  border-top: 2px solid #f8f8f8;
+  background-color: #f8f8f8;
+}
+
+.menu .product img {
+  width: 100%;
+}
+
+.menu .add_to_cart_btn {
+  background-color: transparent;
+  color: #fe7d00;
+  font-weight: bold;
+  border-radius: 50px;
+  border: 2px solid #fe7d00;
+  padding: 0.2rem 1rem;
+}
+
+.menu .add_to_cart_btn:hover {
+  background-color: #fe7d00;
+  border: 2px solid transparent;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer {
+  background-color: #f8f8f8;
+  padding: 1rem 0;
+  margin-top: 5rem;
+}
+
+.footer .copy_write {
+  font-size: 1.1rem;
+}
+
+.footer .copy_write .github_link {
+  color: #fe7d00 !important;
+  text-decoration: none;
+}
+

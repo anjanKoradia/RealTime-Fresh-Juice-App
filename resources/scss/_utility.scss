@@ -1,0 +1,19 @@
+hr {
+  width: 60px;
+  margin: 0.8rem auto 3rem auto;
+  border: 2px solid $primary;
+}
+
+.btn_orange {
+  background-color: $primary;
+  color: $pure;
+  border-radius: 50px;
+  border: 2px solid transparent;
+
+  &:hover {
+    background-color: transparent;
+    border: 2px solid $primary;
+    color: $primary;
+    transition: $smooth;
+  }
+}
