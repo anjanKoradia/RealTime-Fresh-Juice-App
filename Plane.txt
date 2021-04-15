@@ -23,3 +23,5 @@
     - setup npm scripts
 
 [.] Create Home page using Html and Css
+
+[.] Set defaul layout and than add particular body

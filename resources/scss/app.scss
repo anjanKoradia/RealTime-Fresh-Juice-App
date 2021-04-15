@@ -21,6 +21,7 @@ body {
   }
   .nav-link {
     font-size: 1.2rem;
+    font-weight: normal;
 
     &:hover {
       color: $primary !important;
@@ -33,7 +34,7 @@ body {
 }
 // -------------------- Navbar Styling End --------------------
 
-// -------------------- Hero Styling Start --------------------
+// -------------------- Hero Section Styling Start --------------------
 .hero {
   background-color: $secondary;
   height: calc(100vh - 86px);
@@ -50,10 +51,11 @@ body {
     padding: 0.3rem 1.2rem;
   }
 }
-// -------------------- Hero Styling End --------------------
+// -------------------- Hero Section Styling End --------------------
 
-// -------------------- Menu Styling Start --------------------
+// -------------------- Menu Section Styling Start --------------------
 .menu {
+  margin: 5rem 0;
   .product {
     border: 2px solid $secondary;
     border-radius: 5px;
@@ -83,13 +85,12 @@ body {
     }
   }
 }
-// -------------------- Menu Styling End --------------------
+// -------------------- Menu Section Styling End --------------------
 
 // -------------------- Footer Styling Start --------------------
 .footer {
   background-color: $secondary;
   padding: 1rem 0;
-  margin-top: 5rem;
 
   .copy_write {
     font-size: 1.1rem;
@@ -101,3 +102,52 @@ body {
   }
 }
 // -------------------- Footer Styling End --------------------
+
+// -------------------- Cart Page Styling Start --------------------
+.cart {
+  background-color: $secondary;
+
+  .order {
+    .order_list {
+      img {
+        width: 40%;
+        height: 40%;
+      }
+    }
+  }
+
+  .empty_cart {
+    p {
+      font-size: 1.1rem;
+    }
+
+    img {
+      width: 40%;
+    }
+
+    .go_back_btn {
+      padding: 0.2rem 1rem;
+    }
+  }
+}
+// -------------------- Cart Page Styling End --------------------
+
+// -------------------- Login-Register Page Styling Start --------------------
+.login,
+.register {
+  background-color: $secondary;
+  min-height: calc(100vh - 145px);
+
+  form {
+    background-color: $pure;
+    width: 450px;
+    border-radius: 5px;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+
+    .login_btn,
+    .sign_up_btn {
+      padding: 0.2rem 1.5rem;
+    }
+  }
+}
+// -------------------- Login-Register Page Styling End --------------------

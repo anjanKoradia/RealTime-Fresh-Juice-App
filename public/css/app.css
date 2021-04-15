@@ -40,6 +40,7 @@ body {
 
 .navbar .nav-link {
   font-size: 1.2rem;
+  font-weight: normal;
 }
 
 .navbar .nav-link:hover {
@@ -68,6 +69,10 @@ body {
 .hero .shop_now_btn {
   font-size: 1.1rem;
   padding: 0.3rem 1.2rem;
+}
+
+.menu {
+  margin: 5rem 0;
 }
 
 .menu .product {
@@ -103,7 +108,6 @@ body {
 .footer {
   background-color: #f8f8f8;
   padding: 1rem 0;
-  margin-top: 5rem;
 }
 
 .footer .copy_write {
@@ -113,5 +117,47 @@ body {
 .footer .copy_write .github_link {
   color: #fe7d00 !important;
   text-decoration: none;
+}
+
+.cart {
+  background-color: #f8f8f8;
+}
+
+.cart .order .order_list img {
+  width: 40%;
+  height: 40%;
+}
+
+.cart .empty_cart p {
+  font-size: 1.1rem;
+}
+
+.cart .empty_cart img {
+  width: 40%;
+}
+
+.cart .empty_cart .go_back_btn {
+  padding: 0.2rem 1rem;
+}
+
+.login,
+.register {
+  background-color: #f8f8f8;
+  min-height: calc(100vh - 145px);
+}
+
+.login form,
+.register form {
+  background-color: #fff;
+  width: 450px;
+  border-radius: 5px;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.login form .login_btn,
+.login form .sign_up_btn,
+.register form .login_btn,
+.register form .sign_up_btn {
+  padding: 0.2rem 1.5rem;
 }
 
