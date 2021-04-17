@@ -27,16 +27,17 @@
     <hr />
   </div>
   <div class="menu_items row gy-5">
+    <% juices.forEach((juice) => { %>
     <div class="col-lg-3">
       <div class="product">
-        <img class="p-3" src="/img/pomegranate_juice.png" alt="" />
+        <img class="p-3" src="/img/<%= juice.image %>" alt="" />
         <div class="text-center p-3">
-          <h4 class="mb-3">Pomegranate Juice</h4>
+          <h4 class="mb-3"><%= juice.name %></h4>
           <span class="badge bg-secondary rounded-pill text-uppercase px-3"
-            >250 ml</span
+            ><%= juice.quantity %></span
           >
           <div class="d-flex align-items-center justify-content-around mt-3">
-            <span class="h5 mb-0 fw-bold">Rs. 250</span>
+            <span class="h5 mb-0 fw-bold">Rs. <%= juice.price %></span>
             <button class="btn add_to_cart_btn">
               <span class="me-2">+</span>
               <span>Add</span>
@@ -45,6 +46,7 @@
         </div>
       </div>
     </div>
+    <% }) %>
   </div>
 </section>
 <!-- -------------------- Menu End -------------------- -->

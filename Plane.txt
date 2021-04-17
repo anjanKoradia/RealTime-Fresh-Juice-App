@@ -29,3 +29,10 @@
 [.] Move Routes to routes folder
 
 [.] Create controllers and connect routes with controllers.
+
+[.] Create database and connect with server.js file
+
+    - install mongooes
+    - create model for menu
+
+[.] fetch menu item from database and show on home page

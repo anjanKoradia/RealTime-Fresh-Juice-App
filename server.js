@@ -3,7 +3,25 @@ const app = express();
 const ejs = require("ejs");
 const expressLayout = require("express-ejs-layouts");
 const path = require("path");
+const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
+
+// Database connection
+const url = "mongodb://localhost/fresh_juice";
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useFindAndModify: true,
+});
+const connection = mongoose.connection;
+connection
+  .once("open", () => {
+    console.log("Database connected...");
+  })
+  .catch((err) => {
+    console.log("Connection failed...");
+  });
 
 // Assets
 app.use(express.static("public"));
