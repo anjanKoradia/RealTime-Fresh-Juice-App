@@ -24,4 +24,8 @@
 
 [.] Create Home page using Html and Css
 
-[.] Set defaul layout and than add particular body
+[.] Set defaul layout and than add particular pages
+
+[.] Move Routes to routes folder
+
+[.] Create controllers and connect routes with controllers.
