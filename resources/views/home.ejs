@@ -9,9 +9,9 @@
         We Beleive That Healthy Eating, Clean Air And, Gental Char Best Start To
         Genuinw Wellbeging.
       </p>
-      <button type="button" class="btn btn_orange shop_now_btn my-3">
+      <a href="#menu" type="button" class="btn btn_orange shop_now_btn my-3">
         Shop Now
-      </button>
+      </a>
     </div>
     <div class="w-50">
       <img class="w-100 ps-lg-5" src="/img/hero-juice.png" alt="" />
@@ -21,16 +21,16 @@
 <!-- -------------------- Hero End -------------------- -->
 
 <!-- -------------------- Menu Start -------------------- -->
-<section class="menu container mx-auto">
-  <div class="heading my-5">
+<section class="menu container mx-auto" id="menu">
+  <div class="heading my-5 pt-5">
     <h3 class="fw-bold text-center">All Products</h3>
     <hr />
   </div>
   <div class="menu_items row gy-5">
     <% juices.forEach((juice) => { %>
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-6">
       <div class="product">
-        <img class="p-3" src="/img/<%= juice.image %>" alt="" />
+        <img src="/img/<%= juice.image %>" alt="" />
         <div class="text-center p-3">
           <h4 class="mb-3"><%= juice.name %></h4>
           <span class="badge bg-secondary rounded-pill text-uppercase px-3"
@@ -38,7 +38,10 @@
           >
           <div class="d-flex align-items-center justify-content-around mt-3">
             <span class="h5 mb-0 fw-bold">Rs. <%= juice.price %></span>
-            <button class="btn add_to_cart_btn">
+            <button
+              data-juice="<%= JSON.stringify(juice) %>"
+              class="btn add_to_cart_btn"
+            >
               <span class="me-2">+</span>
               <span>Add</span>
             </button>

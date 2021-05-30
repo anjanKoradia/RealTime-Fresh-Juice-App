@@ -36,3 +36,13 @@
     - create model for menu
 
 [.] fetch menu item from database and show on home page
+
+[.] Add to cart functionallty (store cart in session storage)
+
+    - install express-session
+    - set session config
+    - install dotenv
+    - create .env file and set COOKIE_SECRET
+    - install connect-mongo to store session in mongoDB
+    - define session store
+    - store items in session and then display in cart page.

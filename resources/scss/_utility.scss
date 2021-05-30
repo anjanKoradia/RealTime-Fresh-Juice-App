@@ -3,6 +3,12 @@ hr {
   margin: 0.8rem auto 3rem auto;
   border: 2px solid $primary;
 }
+.noty_body {
+  padding: 0.8rem 1.2rem !important;
+}
+.noty_theme__metroui {
+  border-radius: 50px !important;
+}
 
 .btn_orange {
   background-color: $primary;

@@ -1,5 +1,8 @@
 @import "./variables";
 @import "./utility";
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
+@import "~noty/src/themes/metroui.scss";
 
 * {
   box-sizing: border-box;
@@ -56,17 +59,25 @@ body {
 // -------------------- Menu Section Styling Start --------------------
 .menu {
   margin: 5rem 0;
+
   .product {
-    border: 2px solid $secondary;
-    border-radius: 5px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
 
     > div {
-      border-top: 2px solid $secondary;
       background-color: $secondary;
     }
 
     img {
+      padding: 1rem;
       width: 100%;
+      filter: grayscale(0.5);
+      transition: $smooth;
+    }
+
+    &:hover {
+      img {
+        filter: grayscale(0);
+      }
     }
   }
   .add_to_cart_btn {
@@ -110,8 +121,21 @@ body {
   .order {
     .order_list {
       img {
-        width: 40%;
-        height: 40%;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+
+      > div {
+        display: grid;
+        grid-template-columns: 1.6fr 0.6fr 0.6fr;
+        grid-template-rows: 1fr;
+        align-items: center;
+        margin: 2rem 0;
+
+        h5 {
+          text-align: center;
+        }
       }
     }
   }
