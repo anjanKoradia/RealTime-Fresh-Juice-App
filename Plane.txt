@@ -46,3 +46,10 @@
     - install connect-mongo to store session in mongoDB
     - define session store
     - store items in session and then display in cart page.
+
+[.] Logis & Register functionallty
+
+    - Register
+        - Validation for empty fileld like name, email or password
+        - check user is exist or not
+        - create user in database
