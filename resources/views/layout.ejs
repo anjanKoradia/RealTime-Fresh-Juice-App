@@ -48,12 +48,26 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Offers</a>
             </li>
+            <% if(user) { %>
+            <li class="nav-item">
+              <!-- here form is used because we want to do post request on /logout route -->
+              <form id="logout" action="/logout" method="post">
+                <a
+                  onclick="document.getElementById('logout').submit()"
+                  class="nav-link"
+                  href="#"
+                  >Logout</a
+                >
+              </form>
+            </li>
+            <% } else { %>
             <li class="nav-item">
               <a class="nav-link" href="/register">Register</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
+            <% } %>
           </ul>
           <a
             href="/cart"

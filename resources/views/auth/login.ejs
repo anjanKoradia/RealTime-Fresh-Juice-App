@@ -1,24 +1,27 @@
 <section class="login d-flex align-items-center">
   <div class="container">
-    <form class="row row-cols-1 g-3 mx-auto p-4">
+    <form action="/login" method="POST" class="row row-cols-1 g-3 mx-auto p-4">
       <h3 class="fw-bold">Login To Continue</h3>
       <div class="col">
         <label for="inputEmail" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail" required />
+        <input name="email" type="email" class="form-control" id="inputEmail" />
       </div>
       <div class="col">
         <label for="inputPassword" class="form-label">Password</label>
         <input
+          name="password"
           type="password"
           class="form-control"
           id="inputPassword"
-          required
         />
       </div>
       <div class="mt-4 d-flex align-items-center justify-content-between">
         <button type="submit" class="btn btn_orange login_btn">Log in</button>
         <a href="/register" class="text-decoration-none">Don't have account?</a>
       </div>
+      <% if(messages.error) { %>
+      <p class="mb-0  text-danger"><%= messages.error %></p>
+      <% } %>
     </form>
   </div>
 </section>

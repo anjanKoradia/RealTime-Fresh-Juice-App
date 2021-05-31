@@ -47,9 +47,17 @@
     - define session store
     - store items in session and then display in cart page.
 
-[.] Logis & Register functionallty
+[.] Login & Register functionallty
 
     - Register
         - Validation for empty fileld like name, email or password
         - check user is exist or not
         - create user in database
+    
+    - Login
+        - install password for Login process
+        - write passport config in server.js file
+        - write logic to login an user in application
+        - if user login in application then show logout but in navbar
+        - after login user don't go to login and Register page via url for that create guest.js middleware
+        - apply logout functionallty by creating post logout route
