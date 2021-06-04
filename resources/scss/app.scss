@@ -118,7 +118,7 @@ body {
 .cart {
   background-color: $secondary;
 
-  .order {
+  .cart_order {
     .order_list {
       img {
         width: 150px;
@@ -175,3 +175,24 @@ body {
   }
 }
 // -------------------- Login-Register Page Styling End --------------------
+
+// -------------------- Order Page Styling Start --------------------
+.orders {
+  background-color: $secondary;
+  height: 80vh;
+
+  .order_table {
+    th,
+    td {
+      padding-left: 1rem;
+    }
+
+    tbody {
+      a {
+        text-decoration: none;
+        color: $primary;
+      }
+    }
+  }
+}
+// -------------------- Order Page Styling End --------------------

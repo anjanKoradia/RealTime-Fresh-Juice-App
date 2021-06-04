@@ -61,3 +61,10 @@
         - if user login in application then show logout but in navbar
         - after login user don't go to login and Register page via url for that create guest.js middleware
         - apply logout functionallty by creating post logout route
+
+[.] Place order functionallty.
+
+    - if user is loged in then show order now button otherwise shoe login to continue button
+    - create /order post route and order shcema
+    - write logic to store order in database
+    - show orders placed by customer in Orders page.

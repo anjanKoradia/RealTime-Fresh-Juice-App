@@ -1,7 +1,7 @@
 hr {
   width: 60px;
   margin: 0.8rem auto 3rem auto;
-  border: 2px solid #66b447;
+  border: 2px solid #fe7d00;
 }
 
 .noty_body {
@@ -13,7 +13,7 @@ hr {
 }
 
 .btn_orange {
-  background-color: #66b447;
+  background-color: #fe7d00;
   color: #fff;
   border-radius: 50px;
   border: 2px solid transparent;
@@ -21,8 +21,8 @@ hr {
 
 .btn_orange:hover {
   background-color: transparent;
-  border: 2px solid #66b447;
-  color: #66b447;
+  border: 2px solid #fe7d00;
+  color: #fe7d00;
   transition: all 0.2s ease-in-out;
 }
 
@@ -396,7 +396,7 @@ body {
 
 .navbar .navbar-brand {
   font-size: 2.5rem;
-  color: #66b447;
+  color: #fe7d00;
 }
 
 .navbar .nav-link {
@@ -405,7 +405,7 @@ body {
 }
 
 .navbar .nav-link:hover {
-  color: #66b447 !important;
+  color: #fe7d00 !important;
   transition: all 0.2s ease-in-out;
 }
 
@@ -457,15 +457,15 @@ body {
 
 .menu .add_to_cart_btn {
   background-color: transparent;
-  color: #66b447;
+  color: #fe7d00;
   font-weight: bold;
   border-radius: 50px;
-  border: 2px solid #66b447;
+  border: 2px solid #fe7d00;
   padding: 0.2rem 1rem;
 }
 
 .menu .add_to_cart_btn:hover {
-  background-color: #66b447;
+  background-color: #fe7d00;
   border: 2px solid transparent;
   color: #fff;
   transition: all 0.2s ease-in-out;
@@ -481,7 +481,7 @@ body {
 }
 
 .footer .copy_write .github_link {
-  color: #66b447 !important;
+  color: #fe7d00 !important;
   text-decoration: none;
 }
 
@@ -489,13 +489,13 @@ body {
   background-color: #f8f8f8;
 }
 
-.cart .order .order_list img {
+.cart .cart_order .order_list img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
 }
 
-.cart .order .order_list > div {
+.cart .cart_order .order_list > div {
   display: grid;
   grid-template-columns: 1.6fr 0.6fr 0.6fr;
   grid-template-rows: 1fr;
@@ -503,7 +503,7 @@ body {
   margin: 2rem 0;
 }
 
-.cart .order .order_list > div h5 {
+.cart .cart_order .order_list > div h5 {
   text-align: center;
 }
 
@@ -538,5 +538,20 @@ body {
 .register form .login_btn,
 .register form .sign_up_btn {
   padding: 0.2rem 1.5rem;
+}
+
+.orders {
+  background-color: #f8f8f8;
+  height: 80vh;
+}
+
+.orders .order_table th,
+.orders .order_table td {
+  padding-left: 1rem;
+}
+
+.orders .order_table tbody a {
+  text-decoration: none;
+  color: #fe7d00;
 }
 

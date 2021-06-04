@@ -5294,7 +5294,7 @@ var updateCart = function updateCart(juice) {
       theme: "metroui",
       type: "success",
       text: "Item added to cart successful.",
-      timeout: 1000
+      timeout: 500
     }).show();
   });
 };
@@ -5304,7 +5304,15 @@ addToCartBtn.forEach(function (btn) {
     var juice = JSON.parse(btn.dataset.juice);
     updateCart(juice);
   });
-});
+}); // Alert message on order placed
+
+var alertMsg = document.querySelector("#order_placed_alert");
+
+if (alertMsg) {
+  setTimeout(function () {
+    alertMsg.remove();
+  }, 2000);
+}
 
 /***/ }),
 

@@ -11,7 +11,7 @@ const updateCart = (juice) => {
       theme: "metroui",
       type: "success",
       text: "Item added to cart successful.",
-      timeout: 1000,
+      timeout: 500,
     }).show();
   });
 };
@@ -22,3 +22,11 @@ addToCartBtn.forEach((btn) => {
     updateCart(juice);
   });
 });
+
+// Alert message on order placed
+const alertMsg = document.querySelector("#order_placed_alert");
+if (alertMsg) {
+  setTimeout(() => {
+    alertMsg.remove();
+  }, 2000);
+}

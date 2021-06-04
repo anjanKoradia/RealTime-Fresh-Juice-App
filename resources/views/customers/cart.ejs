@@ -1,6 +1,6 @@
 <section class="cart">
   <% if(session.cart) { %>
-  <div class="order container mx-auto w-50 py-5">
+  <div class="cart_order container mx-auto w-50 py-5">
     <div class="d-flex align-items-center border-bottom border-2 pb-2">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,10 +36,16 @@
         <h6 class="fw-bold">Total Amount:</h6>
         <h5 class="fw-bold ms-2">Rs. <%= session.cart.totalPrice %></h5>
       </div>
-      <div class="d-flex flex-column justify-content-end w-50 ms-auto my-4">
+      <% if(user) { %>
+      <form
+        action="/orders"
+        method="POST"
+        class="d-flex flex-column justify-content-end w-50 ms-auto my-4"
+      >
         <div class="input-group">
           <span class="input-group-text">Address</span>
           <textarea
+            name="address"
             class="form-control"
             rows="1"
             aria-label="With textarea"
@@ -50,15 +56,18 @@
             >Phone Number</span
           >
           <input
+            name="phone_number"
             type="text"
             class="form-control"
             aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-default"
           />
         </div>
-        <!-- <button class="btn btn_orange">Order Now</button> -->
-        <a href="/login" class="btn btn_orange">Login To Continue</a>
-      </div>
+        <button type="submit" class="btn btn_orange">Order Now</button>
+      </form>
+      <% } else { %>
+      <a href="/login" class="btn btn_orange px-5">Login To Continue</a>
+      <% } %>
     </div>
   </div>
   <% } else { %>

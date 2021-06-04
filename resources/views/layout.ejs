@@ -22,7 +22,7 @@
     />
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="/css/app.css" />
   </head>
   <body>
     <!-- -------------------- Navbar Strat -------------------- -->
@@ -45,10 +45,11 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/">Menu</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Offers</a>
-            </li>
+
             <% if(user) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/customer/orders">Orders</a>
+            </li>
             <li class="nav-item">
               <!-- here form is used because we want to do post request on /logout route -->
               <form id="logout" action="/logout" method="post">
@@ -111,7 +112,7 @@
     <!-- -------------------- Footer End -------------------- -->
 
     <!-- External Js -->
-    <script src="js/app.js"></script>
+    <script src="/js/app.js"></script>
 
     <!-- Bootstrap Js -->
     <script
