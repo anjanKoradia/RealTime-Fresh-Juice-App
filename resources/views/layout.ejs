@@ -48,7 +48,7 @@
 
             <% if(user) { %>
             <li class="nav-item">
-              <a class="nav-link" href="/customer/orders">Orders</a>
+              <a class="nav-link" href="/<%= user.role %>/orders">Orders</a>
             </li>
             <li class="nav-item">
               <!-- here form is used because we want to do post request on /logout route -->
@@ -70,6 +70,7 @@
             </li>
             <% } %>
           </ul>
+
           <a
             href="/cart"
             class="btn btn_orange cart_btn d-inline-flex align-items-center ms-md-3"

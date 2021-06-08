@@ -68,3 +68,8 @@
     - create /order post route and order shcema
     - write logic to store order in database
     - show orders placed by customer in Orders page.
+
+[.] Show all orders in admin panel
+
+    - creat get route /admin/orders
+    - admin order page created

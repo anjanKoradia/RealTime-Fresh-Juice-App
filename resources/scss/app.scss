@@ -185,9 +185,13 @@ body {
     th,
     td {
       padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     tbody {
+      p {
+        margin: 0;
+      }
       a {
         text-decoration: none;
         color: $primary;

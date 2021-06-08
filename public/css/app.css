@@ -548,6 +548,11 @@ body {
 .orders .order_table th,
 .orders .order_table td {
   padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.orders .order_table tbody p {
+  margin: 0;
 }
 
 .orders .order_table tbody a {

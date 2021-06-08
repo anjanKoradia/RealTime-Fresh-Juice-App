@@ -34,7 +34,9 @@ function authController() {
             return next(error);
           }
 
-          return res.redirect("/");
+          return res.redirect(
+            req.user.role === "admin" ? "/admin/orders" : "/"
+          );
         });
       })(req, res, next);
     },
