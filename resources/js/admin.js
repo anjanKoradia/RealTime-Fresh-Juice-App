@@ -52,16 +52,17 @@ export default function initAdmin() {
           </td>
           <td style="min-width:250px"> 
             <form action="/admin/order/status" method="POST">
+              <input type="hidden" name="orderId" value="${order._id}">
               <div class="form-group">
                 <select
                   name="status"
                   class="form-control form-select"
-                  aria-label="Default select example"
+                  
                   onchange="this.form.submit()"
                 >
                   <option
-                    value="Order Placed"
-                    ${order.status === "Order Placed" ? "selected" : ""}
+                    value="Placed"
+                    ${order.status === "Placed" ? "selected" : ""}
                   >
                     Placed
                   </option>

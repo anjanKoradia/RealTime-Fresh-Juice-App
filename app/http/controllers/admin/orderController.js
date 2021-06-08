@@ -16,6 +16,19 @@ function orderController() {
           }
         });
     },
+
+    updateStatus: (req, res) => {
+      Order.updateOne(
+        { _id: req.body.orderId },
+        { status: req.body.status },
+        (error, data) => {
+          if (error) {
+            return res.redirect("/admin/orders");
+          }
+          return res.redirect("/admin/orders");
+        }
+      );
+    },
   };
 }
 

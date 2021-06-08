@@ -15,9 +15,11 @@ function initRoutes(app) {
   app.get("/cart", cartController().index);
   app.post("/update-cart", cartController().update);
 
+  // Login Routes
   app.get("/login", guest, authController().login);
   app.post("/login", authController().postLogin);
 
+  // Register Route
   app.get("/register", guest, authController().register);
   app.post("/register", authController().postRegister);
 
@@ -29,6 +31,7 @@ function initRoutes(app) {
 
   // Admin Routes
   app.get("/admin/orders", admin, adminOrderController().index);
+  app.post("/admin/order/status", admin, adminOrderController().updateStatus);
 }
 
 module.exports = initRoutes;
