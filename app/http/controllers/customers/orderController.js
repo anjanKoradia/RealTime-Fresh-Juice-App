@@ -39,6 +39,18 @@ function orderController() {
           return res.redirect("/cart");
         });
     },
+
+    showStauts: async (req, res) => {
+      const order = await Order.findById(req.params.id);
+
+      // Authorized user (Restrict customer to see another customer order status)
+      // use toString() method because we can't compare to objects
+      if (req.user._id.toString() === order.customer_id.toString()) {
+        return res.render("customers/orderStatus", { order: order });
+      }
+
+      return res.redirect("/");
+    },
   };
 }
 

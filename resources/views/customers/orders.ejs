@@ -43,7 +43,9 @@
             <td scope="row">
               <%= orders.length - index %>
             </td>
-            <td><a href="/"><%= order._id %></a></td>
+            <td>
+              <a href="/customer/order/<%= order._id %>"><%= order._id %></a>
+            </td>
             <td><%= order.phone_number %></td>
             <td class="w-25"><%= order.address %></td>
             <td>

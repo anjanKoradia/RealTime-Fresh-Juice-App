@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 hr {
   width: 60px;
   margin: 0.8rem auto 3rem auto;
@@ -413,6 +415,10 @@ body {
   padding: 0.25rem 0.8rem;
 }
 
+.navbar .cart_btn i {
+  font-size: 1.5rem;
+}
+
 .hero {
   background-color: #f8f8f8;
   height: calc(100vh - 86px);
@@ -542,7 +548,7 @@ body {
 
 .orders {
   background-color: #f8f8f8;
-  height: 80vh;
+  height: calc(100vh - 86px - 58.4px);
 }
 
 .orders .order_table th,
@@ -558,5 +564,101 @@ body {
 .orders .order_table tbody a {
   text-decoration: none;
   color: #fe7d00;
+}
+
+.order_status {
+  background-color: #f8f8f8;
+  height: calc(100vh - 86px - 58.4px);
+}
+
+.order_status ul {
+  margin: 2rem 0 0 2.8rem;
+}
+
+.order_status ul li {
+  list-style: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order_status ul li span {
+  position: relative;
+  padding-left: 0.8rem;
+}
+
+.order_status ul li span::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  background-color: #232323;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translateY(-4px);
+  box-shadow: 0 0 1px 10px #f8f8f8;
+}
+
+.order_status ul li span::before {
+  font-family: "Line Awesome Free";
+  font-size: 2rem;
+  font-weight: 600;
+  position: absolute;
+  left: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: inherit;
+}
+
+.order_status ul li:nth-child(1) span::before {
+  content: "\F46C";
+}
+
+.order_status ul li:nth-child(2) span::before {
+  content: "\F560";
+}
+
+.order_status ul li:nth-child(3) span::before {
+  content: "\F561";
+}
+
+.order_status ul li:nth-child(4) span::before {
+  content: "\F0D1";
+}
+
+.order_status ul li:nth-child(5) span::before {
+  content: "\F582";
+}
+
+.order_status ul li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 2px;
+  height: 100%;
+  background-color: #232323;
+}
+
+.order_status ul .step_completed::before {
+  background-color: #ccc;
+}
+
+.order_status ul .step_completed span {
+  color: #ccc;
+}
+
+.order_status ul .step_completed span::after {
+  background-color: #ccc;
+}
+
+.order_status ul .current span {
+  color: #fe7d00;
+}
+
+.order_status ul .current span::after {
+  background-color: #fe7d00;
 }
 

@@ -26934,9 +26934,12 @@ function initAdmin() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
-/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+
 
 
 
@@ -26946,7 +26949,7 @@ var cartCounter = document.querySelector(".cart_counter"); // In navbar display 
 var updateCart = function updateCart(juice) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/update-cart", juice).then(function (res) {
     cartCounter.innerText = res.data.totalQty;
-    new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
+    new noty__WEBPACK_IMPORTED_MODULE_2___default.a({
       theme: "metroui",
       type: "success",
       text: "Item added to cart successful.",
@@ -26972,7 +26975,35 @@ if (alertMsg) {
 } // Display ddmin orders
 
 
-Object(_admin__WEBPACK_IMPORTED_MODULE_2__["default"])();
+Object(_admin__WEBPACK_IMPORTED_MODULE_3__["default"])(); //Change Order status
+
+var statuses = document.querySelectorAll(".status_line");
+var hiddenInput = document.querySelector("#hidden_input");
+var order = JSON.parse(hiddenInput ? hiddenInput.value : null);
+var time = document.createElement("small");
+
+function updateStatus(order) {
+  var stepCompleted = true;
+  statuses.forEach(function (status) {
+    var dataProp = status.dataset.status;
+
+    if (stepCompleted) {
+      status.classList.add("step_completed");
+    }
+
+    if (dataProp === order.status) {
+      stepCompleted = false;
+      time.innerText = moment__WEBPACK_IMPORTED_MODULE_1___default()(order.updatedAt).format("hh:mm A");
+      status.appendChild(time);
+
+      if (status.nextElementSibling) {
+        status.nextElementSibling.classList.add("current");
+      }
+    }
+  });
+}
+
+updateStatus(order);
 
 /***/ }),
 

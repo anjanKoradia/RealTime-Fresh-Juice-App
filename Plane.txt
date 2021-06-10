@@ -78,3 +78,8 @@
 
     - creat post route /admin/order/status
     - update status method
+
+[.] Creat order live status page
+
+    - change order status dinamically
+    - when admin change order status it also visible to order status page. But it's not in real time.

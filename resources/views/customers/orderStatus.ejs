@@ -1,0 +1,34 @@
+<section class="order_status d-flex align-items-center">
+  <div class="container mx-auto w-75">
+    <div class="status_box d-flex align-items-center justify-content-between">
+      <h5 class="fw-bold">Track delivery status</h5>
+      <p class="bg-white py-1 px-3 rounded-pill text-success">
+        <%= order.id %>
+      </p>
+    </div>
+    <!-- use to send data to app.ja file -->
+    <input
+      id="hidden_input"
+      type="hidden"
+      name="order"
+      value="<%= JSON.stringify(order) %>"
+    />
+    <ul>
+      <li class="status_line pb-5" data-status="Placed">
+        <span>Order Place</span>
+      </li>
+      <li class="status_line pb-5" data-status="Confirmed">
+        <span>Confirmation</span>
+      </li>
+      <li class="status_line pb-5" data-status="Prepared">
+        <span>Preparation</span>
+      </li>
+      <li class="status_line pb-5" data-status="Delivered">
+        <span>Out For Delivery</span>
+      </li>
+      <li class="status_line" data-status="Completed">
+        <span>Complete</span>
+      </li>
+    </ul>
+  </div>
+</section>

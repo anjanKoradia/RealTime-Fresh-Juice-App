@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 import Noty from "noty";
 import initAdmin from "./admin";
 
@@ -36,3 +37,30 @@ if (alertMsg) {
 
 // Display ddmin orders
 initAdmin();
+
+//Change Order status
+let statuses = document.querySelectorAll(".status_line");
+let hiddenInput = document.querySelector("#hidden_input");
+let order = JSON.parse(hiddenInput ? hiddenInput.value : null);
+let time = document.createElement("small");
+
+function updateStatus(order) {
+  let stepCompleted = true;
+  statuses.forEach((status) => {
+    let dataProp = status.dataset.status;
+    if (stepCompleted) {
+      status.classList.add("step_completed");
+    }
+    if (dataProp === order.status) {
+      stepCompleted = false;
+      time.innerText = moment(order.updatedAt).format("hh:mm A");
+      status.appendChild(time);
+
+      if (status.nextElementSibling) {
+        status.nextElementSibling.classList.add("current");
+      }
+    }
+  });
+}
+
+updateStatus(order);

@@ -28,6 +28,7 @@ function initRoutes(app) {
   // Customer Routes
   app.post("/orders", auth, customerOrderController().store);
   app.get("/customer/orders", auth, customerOrderController().index);
+  app.get("/customer/order/:id", auth, customerOrderController().showStauts);
 
   // Admin Routes
   app.get("/admin/orders", admin, adminOrderController().index);
