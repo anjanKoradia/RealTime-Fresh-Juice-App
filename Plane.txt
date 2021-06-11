@@ -83,3 +83,8 @@
 
     - change order status dinamically
     - when admin change order status it also visible to order status page. But it's not in real time.
+
+[.] Change order status in real time
+
+    - install socket.io library
+    - creat socket connection

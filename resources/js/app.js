@@ -38,7 +38,7 @@ if (alertMsg) {
 // Display ddmin orders
 initAdmin();
 
-//Change Order status
+// Change Order status
 let statuses = document.querySelectorAll(".status_line");
 let hiddenInput = document.querySelector("#hidden_input");
 let order = JSON.parse(hiddenInput ? hiddenInput.value : null);
@@ -46,6 +46,11 @@ let time = document.createElement("small");
 
 function updateStatus(order) {
   let stepCompleted = true;
+  statuses.forEach((status) => {
+    status.classList.remove("step_completed");
+    status.classList.remove("current");
+  });
+
   statuses.forEach((status) => {
     let dataProp = status.dataset.status;
     if (stepCompleted) {
@@ -62,5 +67,21 @@ function updateStatus(order) {
     }
   });
 }
-
 updateStatus(order);
+
+/* ---------------------------------------- 
+Socket 
+---------------------------------------- */
+const socket = io();
+
+// Join
+if (order) {
+  socket.emit("join", `order_${order._id}`);
+}
+
+socket.on("statusUpdated", (data) => {
+  const updatedOrder = { ...order };
+  updatedOrder.updatedAt = moment().format();
+  updatedOrder.status = data.status;
+  updateStatus(updatedOrder);
+});

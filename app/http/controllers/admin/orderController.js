@@ -25,6 +25,13 @@ function orderController() {
           if (error) {
             return res.redirect("/admin/orders");
           }
+          // Emit event
+          const eventEmitter = req.app.get("eventEmitter");
+          eventEmitter.emit("orderStatusUpdated", {
+            id: req.body.orderId,
+            status: req.body.status,
+          });
+
           return res.redirect("/admin/orders");
         }
       );
