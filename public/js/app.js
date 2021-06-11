@@ -26887,9 +26887,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_2__);
 
 
-function initAdmin() {
+
+function initAdmin(socket) {
   var adminOrderTableBody = document.querySelector("#adminOrderTableBody");
   var orders = [];
   var markup = "";
@@ -26919,6 +26922,18 @@ function initAdmin() {
       return "\n        <tr>\n          <td scope=\"row\">".concat(orders.length - index, "</td>\n          <td class=\"text-success\">").concat(order._id, "</td>\n          <td>\n            ").concat(renderItems(order.items), "\n          </td>\n          <td>\n            <p><b>Name :</b> ").concat(order.customer_id.name, "</p>\n            <p><b>Phone-Number :</b> ").concat(order.phone_number, "</p>\n            <p style=\"max-width:300px\"><b>Address :</b> ").concat(order.address, "</p>\n          </td>\n          <td style=\"min-width:250px\"> \n            <form action=\"/admin/order/status\" method=\"POST\">\n              <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n              <div class=\"form-group\">\n                <select\n                  name=\"status\"\n                  class=\"form-control form-select\"\n                  \n                  onchange=\"this.form.submit()\"\n                >\n                  <option\n                    value=\"Placed\"\n                    ").concat(order.status === "Placed" ? "selected" : "", "\n                  >\n                    Placed\n                  </option>\n                  <option\n                    value=\"Confirmed\"\n                    ").concat(order.status === "Confirmed" ? "selected" : "", "\n                  >\n                    Confirmed\n                  </option>\n                  <option\n                    value=\"Prepared\"\n                    ").concat(order.status === "Prepared" ? "selected" : "", "\n                  >\n                    Prepared\n                  </option>\n                  <option\n                    value=\"Delivered\"\n                    ").concat(order.status === "Delivered" ? "selected" : "", "\n                  >\n                    Delivered\n                  </option>\n                  <option\n                    value=\"Completed\"\n                    ").concat(order.status === "Completed" ? "selected" : "", "\n                  >\n                    Completed\n                  </option>\n                </select>\n              </div>\n            </form>\n          </td>\n          <td>\n            <p>").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt).format("Do MMMM YYYY"), " ,</p>\n            <p>").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt).format("dddd"), " ,</p>\n            <p>").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt).format("hh:mm A"), "</p>\n          </td>\n        </tr>\n      ");
     }).join("");
   }
+
+  socket.on("orderListUpdated", function (order) {
+    new noty__WEBPACK_IMPORTED_MODULE_2___default.a({
+      theme: "metroui",
+      type: "success",
+      text: "New order recived.",
+      timeout: 2000
+    }).show();
+    orders.unshift(order);
+    adminOrderTableBody.innerHTML = "";
+    adminOrderTableBody.innerHTML = generateMarkup(orders);
+  });
 }
 
 /***/ }),
@@ -26978,10 +26993,8 @@ if (alertMsg) {
   setTimeout(function () {
     alertMsg.remove();
   }, 2000);
-} // Display ddmin orders
+} // Change Order status
 
-
-Object(_admin__WEBPACK_IMPORTED_MODULE_3__["default"])(); // Change Order status
 
 var statuses = document.querySelectorAll(".status_line");
 var hiddenInput = document.querySelector("#hidden_input");
@@ -27022,7 +27035,15 @@ var socket = io(); // Join
 
 if (order) {
   socket.emit("join", "order_".concat(order._id));
-}
+} // Update order list in real time
+
+
+var adminAreaPath = window.location.pathname;
+
+if (adminAreaPath.includes("admin")) {
+  socket.emit("join", "adminRoom");
+} // Update order status in real time
+
 
 socket.on("statusUpdated", function (data) {
   var updatedOrder = _objectSpread({}, order);
@@ -27030,7 +27051,9 @@ socket.on("statusUpdated", function (data) {
   updatedOrder.updatedAt = moment__WEBPACK_IMPORTED_MODULE_1___default()().format();
   updatedOrder.status = data.status;
   updateStatus(updatedOrder);
-});
+}); // Display admin orders
+
+Object(_admin__WEBPACK_IMPORTED_MODULE_3__["default"])(socket);
 
 /***/ }),
 

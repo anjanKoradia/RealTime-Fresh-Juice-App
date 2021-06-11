@@ -30,9 +30,16 @@ function orderController() {
       order
         .save()
         .then((order) => {
-          req.flash("success", "Order placed successfully.");
-          delete req.session.cart;
-          return res.redirect("/customer/orders");
+          Order.populate(order, { path: "customer_id" }, (error, result) => {
+            req.flash("success", "Order placed successfully.");
+            delete req.session.cart;
+
+            // Emit event (this is for update order list realtime in admin panel)
+            const eventEmitter = req.app.get("eventEmitter");
+            eventEmitter.emit("orderPalced", result);
+
+            return res.redirect("/customer/orders");
+          });
         })
         .catch((error) => {
           req.flash("erroe", "Somthing went wrong");

@@ -1,7 +1,8 @@
 import axios from "axios";
 import moment from "moment";
+import Noty from "noty";
 
-export default function initAdmin() {
+export default function initAdmin(socket) {
   const adminOrderTableBody = document.querySelector("#adminOrderTableBody");
 
   let orders = [];
@@ -104,4 +105,17 @@ export default function initAdmin() {
       })
       .join("");
   }
+
+  socket.on("orderListUpdated", (order) => {
+    new Noty({
+      theme: "metroui",
+      type: "success",
+      text: "New order recived.",
+      timeout: 2000,
+    }).show();
+
+    orders.unshift(order);
+    adminOrderTableBody.innerHTML = "";
+    adminOrderTableBody.innerHTML = generateMarkup(orders);
+  });
 }

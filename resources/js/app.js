@@ -35,9 +35,6 @@ if (alertMsg) {
   }, 2000);
 }
 
-// Display ddmin orders
-initAdmin();
-
 // Change Order status
 let statuses = document.querySelectorAll(".status_line");
 let hiddenInput = document.querySelector("#hidden_input");
@@ -79,9 +76,19 @@ if (order) {
   socket.emit("join", `order_${order._id}`);
 }
 
+// Update order list in real time
+let adminAreaPath = window.location.pathname;
+if (adminAreaPath.includes("admin")) {
+  socket.emit("join", "adminRoom");
+}
+
+// Update order status in real time
 socket.on("statusUpdated", (data) => {
   const updatedOrder = { ...order };
   updatedOrder.updatedAt = moment().format();
   updatedOrder.status = data.status;
   updateStatus(updatedOrder);
 });
+
+// Display admin orders
+initAdmin(socket);

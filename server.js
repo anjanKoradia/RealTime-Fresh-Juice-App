@@ -112,6 +112,12 @@ io.on("connection", (socket) => {
   });
 });
 
+// update order status in real time
 eventEmitter.on("orderStatusUpdated", (data) => {
   io.to(`order_${data.id}`).emit("statusUpdated", data);
+});
+
+// update order list in real time in admin panel
+eventEmitter.on("orderPalced", (data) => {
+  io.to("adminRoom").emit("orderListUpdated", data);
 });

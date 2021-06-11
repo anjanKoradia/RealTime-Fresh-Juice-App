@@ -88,3 +88,5 @@
 
     - install socket.io library
     - creat socket connection
+
+[.] Update order list in real time in admin panel
