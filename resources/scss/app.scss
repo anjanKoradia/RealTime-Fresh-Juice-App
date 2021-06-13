@@ -183,7 +183,7 @@ body {
 // -------------------- Order Page Styling Start --------------------
 .orders {
   background-color: $secondary;
-  height: calc(100vh - 86px - 58.4px);
+  min-height: calc(100vh - 86px - 58.4px);
 
   .order_table {
     th,
@@ -312,3 +312,20 @@ body {
 }
 
 // -------------------- Order Status Page Styling End --------------------
+
+// -------------------- Error Page Styling Start --------------------
+.error_page {
+  min-height: calc(100vh - 86px - 58.4px);
+  p {
+    font-size: 1.1rem;
+  }
+
+  img {
+    width: 55%;
+  }
+
+  .go_back_btn {
+    padding: 0.2rem 1rem;
+  }
+}
+// -------------------- Error Page Styling End --------------------
