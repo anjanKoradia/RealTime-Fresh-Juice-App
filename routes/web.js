@@ -8,11 +8,12 @@ const adminOrderController = require("../app/http/controllers/admin/orderControl
 const guest = require("../app/http/middlewares/guest");
 const auth = require("../app/http/middlewares/auth");
 const admin = require("../app/http/middlewares/admin");
+const cart = require("../app/http/middlewares/cart");
 
 function initRoutes(app) {
   app.get("/", homeController().index);
 
-  app.get("/cart", cartController().index);
+  app.get("/cart", cart, cartController().index);
   app.post("/update-cart", cartController().update);
 
   // Login Routes

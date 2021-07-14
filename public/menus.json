@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "60bf70d02ab8b11906c1eeca"
+  },
+  "name": "Pomegranate Juice",
+  "image": "pomegranate_juice.jpg",
+  "quantity": "250 ml",
+  "price": "40"
+},{
+  "_id": {
+    "$oid": "60bf789232733a2858564603"
+  },
+  "name": "Mango Juice",
+  "image": "mango_juice.jpg",
+  "quantity": "250 ml",
+  "price": "50"
+},{
+  "_id": {
+    "$oid": "60bf78ae32733a2858564604"
+  },
+  "name": "Kiwi Juice",
+  "image": "kiwi_juice.jpg",
+  "quantity": "250 ml",
+  "price": "70"
+},{
+  "_id": {
+    "$oid": "60bf78d532733a2858564605"
+  },
+  "name": "Guava Juice",
+  "image": "guava_juice.jpg",
+  "quantity": "250 ml",
+  "price": "30"
+},{
+  "_id": {
+    "$oid": "60bf78ec32733a2858564606"
+  },
+  "name": "Apple Juice",
+  "image": "apple_juice.jpg",
+  "quantity": "250 ml",
+  "price": "60"
+},{
+  "_id": {
+    "$oid": "60bf793532733a2858564607"
+  },
+  "name": "Strawberry Juice",
+  "image": "strawberry_juice.jpg",
+  "quantity": "250 ml",
+  "price": "55"
+},{
+  "_id": {
+    "$oid": "60bf797b32733a2858564608"
+  },
+  "name": "Mosambi Juice",
+  "image": "mosambi_juice.jpg",
+  "quantity": "250 ml",
+  "price": "30"
+},{
+  "_id": {
+    "$oid": "60bf799832733a2858564609"
+  },
+  "name": "Orange Juice",
+  "image": "orange_juice.jpg",
+  "quantity": "250 ml",
+  "price": "40"
+}]

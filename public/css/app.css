@@ -461,7 +461,8 @@ body {
   filter: grayscale(0);
 }
 
-.menu .add_to_cart_btn {
+.menu .add_to_cart_btn,
+.menu .edit_btn {
   background-color: transparent;
   color: #fe7d00;
   font-weight: bold;
@@ -470,7 +471,8 @@ body {
   padding: 0.2rem 1rem;
 }
 
-.menu .add_to_cart_btn:hover {
+.menu .add_to_cart_btn:hover,
+.menu .edit_btn:hover {
   background-color: #fe7d00;
   border: 2px solid transparent;
   color: #fff;
