@@ -62,7 +62,7 @@
         - after login user don't go to login and Register page via url for that create guest.js middleware
         - apply logout functionallty by creating post logout route
 
-[.] Place order functionallty.
+[.] Place order functionality.
 
     - if user is loged in then show order now button otherwise shoe login to continue button
     - create /order post route and order shcema
@@ -90,3 +90,7 @@
     - creat socket connection
 
 [.] Update order list in real time in admin panel
+
+[.] Create 404 error page & add favicon
+
+[.] Restrict admin to access cart page and if user is admin then show edit btn instead of add btn.

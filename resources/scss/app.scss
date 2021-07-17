@@ -330,3 +330,24 @@ body {
   }
 }
 // -------------------- Error Page Styling End --------------------
+
+// -------------------- Edit Item Page Styling Start --------------------
+.edit_item {
+  background-color: $secondary;
+  height: calc(100vh - 86px - 58.4px);
+
+  .card {
+    width: 80%;
+
+    img {
+      width: 100%;
+    }
+
+    form {
+      label {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+// -------------------- Edit Item Page Styling End --------------------

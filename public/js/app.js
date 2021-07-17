@@ -26909,8 +26909,7 @@ function initAdmin(socket) {
   });
 
   function renderItems(items) {
-    var parsedItems = Object.values(items);
-    console.log(parsedItems); // map function return array of all item and then we use join() method to join all items in single string
+    var parsedItems = Object.values(items); // map function return array of all item and then we use join() method to join all items in single string
 
     return parsedItems.map(function (menuItem) {
       return "\n            <p>".concat(menuItem.item.name, " - ").concat(menuItem.item.quantity, " </p>\n        ");

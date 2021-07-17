@@ -25,7 +25,7 @@ export default function initAdmin(socket) {
 
   function renderItems(items) {
     let parsedItems = Object.values(items);
-    console.log(parsedItems);
+
     // map function return array of all item and then we use join() method to join all items in single string
     return parsedItems
       .map((menuItem) => {

@@ -39,17 +39,14 @@
           <div class="d-flex align-items-center justify-content-around mt-3">
             <span class="h5 mb-0 fw-bold">Rs. <%= juice.price %></span>
             <% if(user && user.role == "admin") { %>
-            <button
-              data-juice="<%= JSON.stringify(juice) %>"
-              class="btn add_to_cart_btn"
-            >
+            <a href="/admin/editItem/<%= juice._id %>" class="btn edit_btn">
               <span class="me-2"><i class="lar la-edit"></i></span>
               <span>Edit</span>
-            </button>
+            </a>
             <% }else{ %>
             <button
               data-juice="<%= JSON.stringify(juice) %>"
-              class="btn edit_btn"
+              class="btn add_to_cart_btn"
             >
               <span class="me-2">+</span>
               <span>Add</span>

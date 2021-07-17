@@ -680,3 +680,20 @@ body {
   padding: 0.2rem 1rem;
 }
 
+.edit_item {
+  background-color: #f8f8f8;
+  height: calc(100vh - 86px - 58.4px);
+}
+
+.edit_item .card {
+  width: 80%;
+}
+
+.edit_item .card img {
+  width: 100%;
+}
+
+.edit_item .card form label {
+  font-size: 1.1rem;
+}
+
