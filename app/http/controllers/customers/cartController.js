@@ -44,6 +44,26 @@ function cartController() {
 
       return res.json({ totalQty: req.session.cart.totalQty });
     },
+
+    increaseItemQty: (req, res) => {
+      req.session.cart.items[req.body.item._id].qty++;
+      req.session.cart.totalPrice += req.body.item.price;
+      req.session.cart.totalQty++;
+
+      return res.json({
+        cart: req.session.cart,
+      });
+    },
+
+    decreaseItemQty: (req, res) => {
+      req.session.cart.items[req.body.item._id].qty--;
+      req.session.cart.totalPrice -= req.body.item.price;
+      req.session.cart.totalQty--;
+
+      return res.json({
+        cart: req.session.cart,
+      });
+    },
   };
 }
 

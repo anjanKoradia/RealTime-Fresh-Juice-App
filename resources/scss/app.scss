@@ -124,6 +124,9 @@ body {
   background-color: $secondary;
 
   .cart_order {
+    .la-shopping-cart {
+      font-size: 2.5rem;
+    }
     .order_list {
       img {
         width: 150px;
@@ -133,7 +136,7 @@ body {
 
       > div {
         display: grid;
-        grid-template-columns: 1.6fr 0.6fr 0.6fr;
+        grid-template-columns: 1fr 0.2fr 0.4fr;
         grid-template-rows: 1fr;
         align-items: center;
         margin: 2rem 0;
@@ -141,17 +144,33 @@ body {
         h5 {
           text-align: center;
         }
+
+        .qty {
+          a {
+            color: $dark;
+
+            i {
+              font-size: 1.2rem;
+
+              &:hover {
+                color: $primary;
+              }
+            }
+          }
+        }
       }
     }
   }
 
   .empty_cart {
+    height: calc(100vh - 86px - 58.4px);
+
     p {
       font-size: 1.1rem;
     }
 
     img {
-      width: 40%;
+      width: 35%;
     }
 
     .go_back_btn {

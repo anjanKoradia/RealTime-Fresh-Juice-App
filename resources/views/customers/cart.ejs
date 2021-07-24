@@ -2,18 +2,7 @@
   <% if(session.cart) { %>
   <div class="cart_order container mx-auto w-50 py-5">
     <div class="d-flex align-items-center border-bottom border-2 pb-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="26"
-        height="26"
-        fill="currentColor"
-        class="bi bi-cart3"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-        />
-      </svg>
+      <i class="las la-shopping-cart"></i>
       <h3 class="fw-bold ms-2 mb-0">Order Summary</h3>
     </div>
     <div class="order_list border-bottom border-2 pb-5">
@@ -26,15 +15,25 @@
             <p class="mb-0 badge bg-secondary"><%= juice.item.quantity %></p>
           </div>
         </div>
-        <h5 class="mb-0"><%= juice.qty %></h5>
-        <h5 class="fw-bold mb-0">Rs. <%= juice.item.price * juice.qty %></h5>
+        <div class="qty d-flex align-items-center justify-content-evenly">
+          <a class="decrease_qty" data-cartjuice="<%= JSON.stringify(juice) %>"
+            ><i class="las la-minus-circle"></i
+          ></a>
+          <h5 class="mb-0 cart_item_qty"><%= juice.qty %></h5>
+          <a class="increase_qty" data-cartjuice="<%= JSON.stringify(juice) %>"
+            ><i class="las la-plus-circle"></i
+          ></a>
+        </div>
+        <h5 class="fw-bold mb-0">Rs. <%= juice.item.price %></h5>
       </div>
       <% } %>
     </div>
     <div class="py-4">
       <div class="d-flex align-items-center justify-content-end">
         <h6 class="fw-bold">Total Amount:</h6>
-        <h5 class="fw-bold ms-2">Rs. <%= session.cart.totalPrice %></h5>
+        <h5 class="cart_total_amt fw-bold ms-2">
+          Rs. <%= session.cart.totalPrice %>
+        </h5>
       </div>
       <% if(user) { %>
       <form

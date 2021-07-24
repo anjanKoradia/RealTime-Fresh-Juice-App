@@ -3,7 +3,7 @@
 hr {
   width: 60px;
   margin: 0.8rem auto 3rem auto;
-  border: 2px solid #fe7d00;
+  border: 2px solid #66b447;
 }
 
 .noty_body {
@@ -15,7 +15,7 @@ hr {
 }
 
 .btn_orange {
-  background-color: #fe7d00;
+  background-color: #66b447;
   color: #fff;
   border-radius: 50px;
   border: 2px solid transparent;
@@ -23,8 +23,8 @@ hr {
 
 .btn_orange:hover {
   background-color: transparent;
-  border: 2px solid #fe7d00;
-  color: #fe7d00;
+  border: 2px solid #66b447;
+  color: #66b447;
   transition: all 0.2s ease-in-out;
 }
 
@@ -398,7 +398,7 @@ body {
 
 .navbar .navbar-brand {
   font-size: 2.5rem;
-  color: #fe7d00;
+  color: #66b447;
 }
 
 .navbar .nav-link {
@@ -407,7 +407,7 @@ body {
 }
 
 .navbar .nav-link:hover {
-  color: #fe7d00 !important;
+  color: #66b447 !important;
   transition: all 0.2s ease-in-out;
 }
 
@@ -464,16 +464,16 @@ body {
 .menu .add_to_cart_btn,
 .menu .edit_btn {
   background-color: transparent;
-  color: #fe7d00;
+  color: #66b447;
   font-weight: bold;
   border-radius: 50px;
-  border: 2px solid #fe7d00;
+  border: 2px solid #66b447;
   padding: 0.2rem 1rem;
 }
 
 .menu .add_to_cart_btn:hover,
 .menu .edit_btn:hover {
-  background-color: #fe7d00;
+  background-color: #66b447;
   border: 2px solid transparent;
   color: #fff;
   transition: all 0.2s ease-in-out;
@@ -489,12 +489,16 @@ body {
 }
 
 .footer .copy_write .github_link {
-  color: #fe7d00 !important;
+  color: #66b447 !important;
   text-decoration: none;
 }
 
 .cart {
   background-color: #f8f8f8;
+}
+
+.cart .cart_order .la-shopping-cart {
+  font-size: 2.5rem;
 }
 
 .cart .cart_order .order_list img {
@@ -505,7 +509,7 @@ body {
 
 .cart .cart_order .order_list > div {
   display: grid;
-  grid-template-columns: 1.6fr 0.6fr 0.6fr;
+  grid-template-columns: 1fr 0.2fr 0.4fr;
   grid-template-rows: 1fr;
   align-items: center;
   margin: 2rem 0;
@@ -515,12 +519,28 @@ body {
   text-align: center;
 }
 
+.cart .cart_order .order_list > div .qty a {
+  color: #232323;
+}
+
+.cart .cart_order .order_list > div .qty a i {
+  font-size: 1.2rem;
+}
+
+.cart .cart_order .order_list > div .qty a i:hover {
+  color: #66b447;
+}
+
+.cart .empty_cart {
+  height: calc(100vh - 86px - 58.4px);
+}
+
 .cart .empty_cart p {
   font-size: 1.1rem;
 }
 
 .cart .empty_cart img {
-  width: 40%;
+  width: 35%;
 }
 
 .cart .empty_cart .go_back_btn {
@@ -565,7 +585,7 @@ body {
 
 .orders .order_table tbody a {
   text-decoration: none;
-  color: #fe7d00;
+  color: #66b447;
 }
 
 .order_status {
@@ -657,11 +677,11 @@ body {
 }
 
 .order_status ul .current span {
-  color: #fe7d00;
+  color: #66b447;
 }
 
 .order_status ul .current span::after {
-  background-color: #fe7d00;
+  background-color: #66b447;
 }
 
 .error_page {

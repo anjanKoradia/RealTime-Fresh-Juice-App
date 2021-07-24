@@ -16,6 +16,8 @@ function initRoutes(app) {
 
   app.get("/cart", cart, cartController().index);
   app.post("/update-cart", cartController().update);
+  app.put("/increase-item-qty", cartController().increaseItemQty);
+  app.put("/decrease-item-qty", cartController().decreaseItemQty);
 
   // Login Routes
   app.get("/login", guest, authController().login);

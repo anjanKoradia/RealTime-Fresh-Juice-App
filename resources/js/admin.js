@@ -30,7 +30,7 @@ export default function initAdmin(socket) {
     return parsedItems
       .map((menuItem) => {
         return `
-            <p>${menuItem.item.name} - ${menuItem.item.quantity} </p>
+            <p>${menuItem.item.name}(${menuItem.item.quantity}) - ${menuItem.qty} </p>
         `;
       })
       .join("");

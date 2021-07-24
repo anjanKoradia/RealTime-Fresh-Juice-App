@@ -1,10 +1,17 @@
 import axios from "axios";
 import moment from "moment";
 import Noty from "noty";
+import { session } from "passport";
 import initAdmin from "./admin";
 
-let addToCartBtn = document.querySelectorAll(".add_to_cart_btn");
 let cartCounter = document.querySelector(".cart_counter");
+let cartItemQty = document.querySelector(".cart_item_qty");
+let cartTotalAmt = document.querySelector(".cart_total_amt");
+
+/* ---------------------------------------- 
+Add Item In Cart 
+---------------------------------------- */
+let addToCartBtn = document.querySelectorAll(".add_to_cart_btn");
 
 // In navbar display total orders and when it added to cart show success popup
 const updateCart = (juice) => {
@@ -65,6 +72,36 @@ function updateStatus(order) {
   });
 }
 updateStatus(order);
+
+/* ---------------------------------------- 
+Increase Decrease Item Quantity In Cart 
+---------------------------------------- */
+let increaseQtyBtn = document.querySelectorAll(".increase_qty");
+let decreaseQtyBtn = document.querySelectorAll(".decrease_qty");
+
+function setValues(res, juice) {
+  cartCounter.innerText = res.data.cart.totalQty;
+  cartItemQty.innerText = res.data.cart.items[juice.item._id].qty;
+  cartTotalAmt.innerText = res.data.cart.totalPrice;
+}
+
+increaseQtyBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let juice = JSON.parse(btn.dataset.cartjuice);
+    axios.put("/increase-item-qty", juice).then((res) => {
+      setValues(res, juice);
+    });
+  });
+});
+
+decreaseQtyBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let juice = JSON.parse(btn.dataset.cartjuice);
+    axios.put("/decrease-item-qty", juice).then((res) => {
+      setValues(res, juice);
+    });
+  });
+});
 
 /* ---------------------------------------- 
 Socket 
