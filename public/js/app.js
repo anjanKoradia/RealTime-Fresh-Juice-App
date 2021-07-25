@@ -37506,17 +37506,22 @@ Increase Decrease Item Quantity In Cart
 
 var increaseQtyBtn = document.querySelectorAll(".increase_qty");
 var decreaseQtyBtn = document.querySelectorAll(".decrease_qty");
+var removeItemBtn = document.querySelectorAll(".remove_item_btn");
 
 function setValues(res, juice) {
   cartCounter.innerText = res.data.cart.totalQty;
-  cartItemQty.innerText = res.data.cart.items[juice.item._id].qty;
-  cartTotalAmt.innerText = res.data.cart.totalPrice;
+
+  if (res.data.cart.items[juice.item._id]) {
+    cartItemQty.innerText = res.data.cart.items[juice.item._id].qty;
+  }
+
+  cartTotalAmt.innerText = "Rs. ".concat(res.data.cart.totalPrice);
 }
 
 increaseQtyBtn.forEach(function (btn) {
   btn.addEventListener("click", function (e) {
     var juice = JSON.parse(btn.dataset.cartjuice);
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/increase-item-qty", juice).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/cart/increase-item-qty", juice).then(function (res) {
       setValues(res, juice);
     });
   });
@@ -37524,8 +37529,17 @@ increaseQtyBtn.forEach(function (btn) {
 decreaseQtyBtn.forEach(function (btn) {
   btn.addEventListener("click", function (e) {
     var juice = JSON.parse(btn.dataset.cartjuice);
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/decrease-item-qty", juice).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/cart/decrease-item-qty", juice).then(function (res) {
       setValues(res, juice);
+    });
+  });
+});
+removeItemBtn.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    var juice = JSON.parse(btn.dataset.cartjuice);
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/cart/remove-item/".concat(juice.item._id)).then(function (res) {
+      setValues(res, juice);
+      btn.parentElement.parentElement.parentElement.parentElement.remove();
     });
   });
 });

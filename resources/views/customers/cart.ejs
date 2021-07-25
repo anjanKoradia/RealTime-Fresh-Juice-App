@@ -12,7 +12,17 @@
           <img src="img/<%= juice.item.image %>" alt="" />
           <div class="ms-4">
             <h4 class="mb-1"><%= juice.item.name %></h4>
-            <p class="mb-0 badge bg-secondary"><%= juice.item.quantity %></p>
+            <p class="mb-0 badge bg-secondary">
+              <%= juice.item.quantity %>
+            </p>
+            <p>
+              <button
+                class="remove_item_btn text-decoration-none text-danger border-0 bg-transparent"
+                data-cartjuice="<%= JSON.stringify(juice) %>"
+              >
+                Remove
+              </button>
+            </p>
           </div>
         </div>
         <div class="qty d-flex align-items-center justify-content-evenly">

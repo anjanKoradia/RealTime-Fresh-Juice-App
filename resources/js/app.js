@@ -78,17 +78,20 @@ Increase Decrease Item Quantity In Cart
 ---------------------------------------- */
 let increaseQtyBtn = document.querySelectorAll(".increase_qty");
 let decreaseQtyBtn = document.querySelectorAll(".decrease_qty");
+let removeItemBtn = document.querySelectorAll(".remove_item_btn");
 
 function setValues(res, juice) {
   cartCounter.innerText = res.data.cart.totalQty;
-  cartItemQty.innerText = res.data.cart.items[juice.item._id].qty;
-  cartTotalAmt.innerText = res.data.cart.totalPrice;
+  if (res.data.cart.items[juice.item._id]) {
+    cartItemQty.innerText = res.data.cart.items[juice.item._id].qty;
+  }
+  cartTotalAmt.innerText = `Rs. ${res.data.cart.totalPrice}`;
 }
 
 increaseQtyBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let juice = JSON.parse(btn.dataset.cartjuice);
-    axios.put("/increase-item-qty", juice).then((res) => {
+    axios.put("/cart/increase-item-qty", juice).then((res) => {
       setValues(res, juice);
     });
   });
@@ -97,8 +100,18 @@ increaseQtyBtn.forEach((btn) => {
 decreaseQtyBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let juice = JSON.parse(btn.dataset.cartjuice);
-    axios.put("/decrease-item-qty", juice).then((res) => {
+    axios.put("/cart/decrease-item-qty", juice).then((res) => {
       setValues(res, juice);
+    });
+  });
+});
+
+removeItemBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let juice = JSON.parse(btn.dataset.cartjuice);
+    axios.delete(`/cart/remove-item/${juice.item._id}`).then((res) => {
+      setValues(res, juice);
+      btn.parentElement.parentElement.parentElement.parentElement.remove();
     });
   });
 });

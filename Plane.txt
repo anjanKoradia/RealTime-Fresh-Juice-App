@@ -98,3 +98,5 @@
 [.] Admin can edit item details.
 
 [.] Increase-Decrease cart item quantity functionality.
+
+[.] Remove item from cart functionality

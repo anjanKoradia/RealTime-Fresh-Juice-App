@@ -64,6 +64,15 @@ function cartController() {
         cart: req.session.cart,
       });
     },
+
+    removeItem: (req, res) => {
+      const { id } = req.params;
+      req.session.cart.totalQty -= req.session.cart.items[id].qty;
+      req.session.cart.totalPrice -=
+        req.session.cart.items[id].qty * req.session.cart.items[id].item.price;
+      delete req.session.cart.items[id];
+      return res.json({ cart: req.session.cart });
+    },
   };
 }
 
