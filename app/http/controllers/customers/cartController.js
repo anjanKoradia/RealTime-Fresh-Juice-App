@@ -45,10 +45,25 @@ function cartController() {
       return res.json({ totalQty: req.session.cart.totalQty });
     },
 
+    removeItem: (req, res) => {
+      const { id } = req.params;
+      let cart = req.session.cart;
+
+      cart.totalQty -= cart.items[id].qty;
+      cart.totalPrice -= cart.items[id].qty * cart.items[id].item.price;
+
+      delete cart.items[id];
+
+      return res.json({ cart: req.session.cart });
+    },
+
     increaseItemQty: (req, res) => {
-      req.session.cart.items[req.body.item._id].qty++;
-      req.session.cart.totalPrice += req.body.item.price;
-      req.session.cart.totalQty++;
+      const { id } = req.params;
+      let cart = req.session.cart;
+
+      cart.items[id].qty++;
+      cart.totalPrice += cart.items[id].item.price;
+      cart.totalQty++;
 
       return res.json({
         cart: req.session.cart,
@@ -56,22 +71,18 @@ function cartController() {
     },
 
     decreaseItemQty: (req, res) => {
-      req.session.cart.items[req.body.item._id].qty--;
-      req.session.cart.totalPrice -= req.body.item.price;
-      req.session.cart.totalQty--;
+      const { id } = req.params;
+      let cart = req.session.cart;
+
+      if (cart.items[id].qty > 1) {
+        cart.items[id].qty--;
+        cart.totalPrice -= cart.items[id].item.price;
+        cart.totalQty--;
+      }
 
       return res.json({
         cart: req.session.cart,
       });
-    },
-
-    removeItem: (req, res) => {
-      const { id } = req.params;
-      req.session.cart.totalQty -= req.session.cart.items[id].qty;
-      req.session.cart.totalPrice -=
-        req.session.cart.items[id].qty * req.session.cart.items[id].item.price;
-      delete req.session.cart.items[id];
-      return res.json({ cart: req.session.cart });
     },
   };
 }

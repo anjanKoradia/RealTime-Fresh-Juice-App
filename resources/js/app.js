@@ -1,11 +1,9 @@
 import axios from "axios";
 import moment from "moment";
 import Noty from "noty";
-import { session } from "passport";
 import initAdmin from "./admin";
 
 let cartCounter = document.querySelector(".cart_counter");
-let cartItemQty = document.querySelector(".cart_item_qty");
 let cartTotalAmt = document.querySelector(".cart_total_amt");
 
 /* ---------------------------------------- 
@@ -80,19 +78,18 @@ let increaseQtyBtn = document.querySelectorAll(".increase_qty");
 let decreaseQtyBtn = document.querySelectorAll(".decrease_qty");
 let removeItemBtn = document.querySelectorAll(".remove_item_btn");
 
-function setValues(res, juice) {
+function setValues(res) {
   cartCounter.innerText = res.data.cart.totalQty;
-  if (res.data.cart.items[juice.item._id]) {
-    cartItemQty.innerText = res.data.cart.items[juice.item._id].qty;
-  }
   cartTotalAmt.innerText = `Rs. ${res.data.cart.totalPrice}`;
 }
 
 increaseQtyBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let juice = JSON.parse(btn.dataset.cartjuice);
-    axios.put("/cart/increase-item-qty", juice).then((res) => {
-      setValues(res, juice);
+    axios.put(`/cart/increase-qty/${juice.item._id}`).then((res) => {
+      btn.previousElementSibling.innerText =
+        res.data.cart.items[juice.item._id].qty;
+      setValues(res);
     });
   });
 });
@@ -100,7 +97,9 @@ increaseQtyBtn.forEach((btn) => {
 decreaseQtyBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     let juice = JSON.parse(btn.dataset.cartjuice);
-    axios.put("/cart/decrease-item-qty", juice).then((res) => {
+    axios.put(`/cart/decrease-qty/${juice.item._id}`).then((res) => {
+      btn.nextElementSibling.innerText =
+        res.data.cart.items[juice.item._id].qty;
       setValues(res, juice);
     });
   });
