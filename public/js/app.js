@@ -26946,13 +26946,10 @@ function initAdmin(socket) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
-/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -26962,115 +26959,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-var cartCounter = document.querySelector(".cart_counter");
-var cartTotalAmt = document.querySelector(".cart_total_amt");
 /* ---------------------------------------- 
-Add Item In Cart 
+Cart Functionality 
 ---------------------------------------- */
 
-var addToCartBtn = document.querySelectorAll(".add_to_cart_btn"); // In navbar display total orders and when it added to cart show success popup
-
-var updateCart = function updateCart(juice) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/update-cart", juice).then(function (res) {
-    cartCounter.innerText = res.data.totalQty;
-    new noty__WEBPACK_IMPORTED_MODULE_2___default.a({
-      theme: "metroui",
-      type: "success",
-      text: "Item added to cart successful.",
-      timeout: 500
-    }).show();
-  });
-}; // On button click send all details about that juice to updateCard function
-
-
-addToCartBtn.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    var juice = JSON.parse(btn.dataset.juice);
-    updateCart(juice);
-  });
-}); // Alert message on order placed
-
-var alertMsg = document.querySelector("#order_placed_alert");
-
-if (alertMsg) {
-  setTimeout(function () {
-    alertMsg.remove();
-  }, 2000);
-} // Change Order status
-
-
-var statuses = document.querySelectorAll(".status_line");
-var hiddenInput = document.querySelector("#hidden_input");
-var order = JSON.parse(hiddenInput ? hiddenInput.value : null);
-var time = document.createElement("small");
-
-function updateStatus(order) {
-  var stepCompleted = true;
-  statuses.forEach(function (status) {
-    status.classList.remove("step_completed");
-    status.classList.remove("current");
-  });
-  statuses.forEach(function (status) {
-    var dataProp = status.dataset.status;
-
-    if (stepCompleted) {
-      status.classList.add("step_completed");
-    }
-
-    if (dataProp === order.status) {
-      stepCompleted = false;
-      time.innerText = moment__WEBPACK_IMPORTED_MODULE_1___default()(order.updatedAt).format("hh:mm A");
-      status.appendChild(time);
-
-      if (status.nextElementSibling) {
-        status.nextElementSibling.classList.add("current");
-      }
-    }
-  });
-}
-
-updateStatus(order);
-/* ---------------------------------------- 
-Increase Decrease Item Quantity In Cart 
----------------------------------------- */
-
-var increaseQtyBtn = document.querySelectorAll(".increase_qty");
-var decreaseQtyBtn = document.querySelectorAll(".decrease_qty");
-var removeItemBtn = document.querySelectorAll(".remove_item_btn");
-
-function setValues(res) {
-  cartCounter.innerText = res.data.cart.totalQty;
-  cartTotalAmt.innerText = "Rs. ".concat(res.data.cart.totalPrice);
-}
-
-increaseQtyBtn.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    var juice = JSON.parse(btn.dataset.cartjuice);
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/cart/increase-qty/".concat(juice.item._id)).then(function (res) {
-      btn.previousElementSibling.innerText = res.data.cart.items[juice.item._id].qty;
-      setValues(res);
-    });
-  });
-});
-decreaseQtyBtn.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    var juice = JSON.parse(btn.dataset.cartjuice);
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/cart/decrease-qty/".concat(juice.item._id)).then(function (res) {
-      btn.nextElementSibling.innerText = res.data.cart.items[juice.item._id].qty;
-      setValues(res, juice);
-    });
-  });
-});
-removeItemBtn.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
-    var juice = JSON.parse(btn.dataset.cartjuice);
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/cart/remove-item/".concat(juice.item._id)).then(function (res) {
-      setValues(res, juice);
-      btn.parentElement.parentElement.parentElement.parentElement.remove();
-    });
-  });
-});
+Object(_cart__WEBPACK_IMPORTED_MODULE_2__["addToCart"])();
+Object(_cart__WEBPACK_IMPORTED_MODULE_2__["increaseItemQty"])();
+Object(_cart__WEBPACK_IMPORTED_MODULE_2__["decreaseItemQty"])();
+Object(_cart__WEBPACK_IMPORTED_MODULE_2__["removeItem"])();
 /* ---------------------------------------- 
 Socket 
 ---------------------------------------- */
@@ -27092,12 +26988,142 @@ if (adminAreaPath.includes("admin")) {
 socket.on("statusUpdated", function (data) {
   var updatedOrder = _objectSpread({}, order);
 
-  updatedOrder.updatedAt = moment__WEBPACK_IMPORTED_MODULE_1___default()().format();
+  updatedOrder.updatedAt = moment__WEBPACK_IMPORTED_MODULE_0___default()().format();
   updatedOrder.status = data.status;
   updateStatus(updatedOrder);
 }); // Display admin orders
 
-Object(_admin__WEBPACK_IMPORTED_MODULE_3__["default"])(socket);
+Object(_admin__WEBPACK_IMPORTED_MODULE_1__["default"])(socket);
+
+/***/ }),
+
+/***/ "./resources/js/cart.js":
+/*!******************************!*\
+  !*** ./resources/js/cart.js ***!
+  \******************************/
+/*! exports provided: addToCart, increaseItemQty, decreaseItemQty, removeItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToCart", function() { return addToCart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increaseItemQty", function() { return increaseItemQty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decreaseItemQty", function() { return decreaseItemQty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeItem", function() { return removeItem; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var cartCounter = document.querySelector(".cart_counter");
+var cartTotalAmt = document.querySelector(".cart_total_amt");
+var addToCartBtn = document.querySelectorAll(".add_to_cart_btn");
+var increaseQtyBtn = document.querySelectorAll(".increase_qty");
+var decreaseQtyBtn = document.querySelectorAll(".decrease_qty");
+var removeItemBtn = document.querySelectorAll(".remove_item_btn");
+function addToCart() {
+  // In navbar display total orders and when it added to cart show success popup
+  var updateCart = function updateCart(juice) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/update-cart", juice).then(function (res) {
+      cartCounter.innerText = res.data.totalQty;
+      new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
+        theme: "metroui",
+        type: "success",
+        text: "Item added to cart successful.",
+        timeout: 500
+      }).show();
+    });
+  }; // On button click send all details about that juice to updateCard function
+
+
+  addToCartBtn.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      var juice = JSON.parse(btn.dataset.juice);
+      updateCart(juice);
+    });
+  }); // Alert message on order placed
+
+  var alertMsg = document.querySelector("#order_placed_alert");
+
+  if (alertMsg) {
+    setTimeout(function () {
+      alertMsg.remove();
+    }, 2000);
+  } // Change Order status
+
+
+  var statuses = document.querySelectorAll(".status_line");
+  var hiddenInput = document.querySelector("#hidden_input");
+  var order = JSON.parse(hiddenInput ? hiddenInput.value : null);
+  var time = document.createElement("small");
+
+  function updateStatus(order) {
+    var stepCompleted = true;
+    statuses.forEach(function (status) {
+      status.classList.remove("step_completed");
+      status.classList.remove("current");
+    });
+    statuses.forEach(function (status) {
+      var dataProp = status.dataset.status;
+
+      if (stepCompleted) {
+        status.classList.add("step_completed");
+      }
+
+      if (dataProp === order.status) {
+        stepCompleted = false;
+        time.innerText = moment(order.updatedAt).format("hh:mm A");
+        status.appendChild(time);
+
+        if (status.nextElementSibling) {
+          status.nextElementSibling.classList.add("current");
+        }
+      }
+    });
+  }
+
+  updateStatus(order);
+}
+
+function setValues(res) {
+  cartCounter.innerText = res.data.cart.totalQty;
+  cartTotalAmt.innerText = "Rs. ".concat(res.data.cart.totalPrice);
+}
+
+function increaseItemQty() {
+  increaseQtyBtn.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      var juice = JSON.parse(btn.dataset.cartjuice);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/cart/increase-qty/".concat(juice.item._id)).then(function (res) {
+        btn.previousElementSibling.innerText = res.data.cart.items[juice.item._id].qty;
+        setValues(res);
+      });
+    });
+  });
+}
+function decreaseItemQty() {
+  decreaseQtyBtn.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      var juice = JSON.parse(btn.dataset.cartjuice);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/cart/decrease-qty/".concat(juice.item._id)).then(function (res) {
+        btn.nextElementSibling.innerText = res.data.cart.items[juice.item._id].qty;
+        setValues(res, juice);
+      });
+    });
+  });
+}
+function removeItem() {
+  removeItemBtn.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      var juice = JSON.parse(btn.dataset.cartjuice);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/cart/remove-item/".concat(juice.item._id)).then(function (res) {
+        setValues(res, juice);
+        btn.parentElement.parentElement.parentElement.parentElement.remove();
+      });
+    });
+  });
+}
 
 /***/ }),
 

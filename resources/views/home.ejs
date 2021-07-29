@@ -9,9 +9,19 @@
         We Beleive That Healthy Eating, Clean Air And, Gental Char Best Start To
         Genuinw Wellbeging.
       </p>
+      <% if(user && user.role == "admin"){ %>
+      <a
+        href="/juice"
+        type="button"
+        class="add_juice_btn btn btn_orange shop_now_btn my-3"
+      >
+        Add Juice
+      </a>
+      <% } else { %>
       <a href="#menu" type="button" class="btn btn_orange shop_now_btn my-3">
         Shop Now
       </a>
+      <% } %>
     </div>
     <div class="w-50">
       <img class="w-100 ps-lg-5" src="/img/hero-juice.png" alt="" />

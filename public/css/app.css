@@ -19,6 +19,7 @@ hr {
   color: #fff;
   border-radius: 50px;
   border: 2px solid transparent;
+  outline: none;
 }
 
 .btn_orange:hover {

@@ -25,7 +25,6 @@ function itemController() {
         }
       );
 
-      res.redirect(req.get("referer"));
       return res.redirect("/");
     },
   };
