@@ -10,10 +10,18 @@ const guest = require("../app/http/middlewares/guest");
 const auth = require("../app/http/middlewares/auth");
 const admin = require("../app/http/middlewares/admin");
 const cart = require("../app/http/middlewares/cart");
+const menuController = require("../app/http/controllers/menu/menuController");
 
 function initRoutes(app) {
   app.get("/", homeController().index);
 
+  // Menu Routes
+  app.get("/menu/addJuice", menuController().indexAddJuice);
+  app.post("/menu/addJuice", menuController().addJuice);
+  app.get("/menu/editJuice/:id", menuController().indexUpdateDetails);
+  app.post("/menu/editJuice/:id/update", menuController().updateDetails);
+
+  // Cart Routes
   app.get("/cart", cart, cartController().index);
   app.post("/update-cart", cartController().update);
   app.put("/cart/increase-qty/:id", cartController().increaseItemQty);
@@ -37,8 +45,6 @@ function initRoutes(app) {
 
   // Admin Routes
   app.get("/admin/orders", admin, adminOrderController().index);
-  app.get("/admin/editItem/:id", adminItemController().index);
-  app.post("/admin/editItem/:id/update", adminItemController().updateDetails);
   app.post("/admin/order/status", admin, adminOrderController().updateStatus);
 }
 

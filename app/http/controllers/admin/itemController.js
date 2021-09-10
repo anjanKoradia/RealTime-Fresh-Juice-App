@@ -25,7 +25,7 @@ function itemController() {
         }
       );
 
-      return res.redirect("/");
+      return res.redirect(`/admin/editItem/${req.params.id}`);
     },
   };
 }

@@ -701,20 +701,59 @@ body {
   padding: 0.2rem 1rem;
 }
 
-.edit_item {
+.edit_juice {
   background-color: #f8f8f8;
   height: calc(100vh - 86px - 58.4px);
 }
 
-.edit_item .card {
+.edit_juice .card {
   width: 80%;
 }
 
-.edit_item .card img {
-  width: 100%;
+.edit_juice .card img {
+  height: 280px;
 }
 
-.edit_item .card form label {
+.edit_juice .card form label {
   font-size: 1.1rem;
+}
+
+.add_juice {
+  background-color: #f8f8f8;
+  height: calc(100vh - 86px - 58.4px);
+}
+
+.add_juice .card {
+  width: 80%;
+}
+
+.add_juice .card .drop_img_container {
+  border: 2px dashed #66b447;
+  border-radius: 10px;
+  height: 280px;
+}
+
+.add_juice .card .drop_img_container i {
+  font-size: 4rem;
+  color: #ccc;
+}
+
+.add_juice .card .drop_img_container p {
+  font-size: 0.8rem;
+}
+
+.add_juice .card .drop_img_container p .browse_btn {
+  font-weight: bold;
+  cursor: pointer;
+  color: blue;
+}
+
+.add_juice .card form label {
+  font-size: 1.1rem;
+}
+
+.draged {
+  background-color: rgba(102, 180, 71, 0.1);
+  border: 4px dashed #66b447;
 }
 

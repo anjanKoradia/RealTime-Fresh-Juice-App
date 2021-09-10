@@ -83,6 +83,14 @@ app.set("views", path.join(__dirname, "/resources/views"));
 app.set("view engine", "ejs");
 
 /* ---------------------------------------- 
+  App Config
+---------------------------------------- */
+global.appRoot = path.resolve(__dirname);
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use("/uploads", express.static("uploads"));
+
+/* ---------------------------------------- 
   Routes
 ---------------------------------------- */
 require("./routes/web")(app);

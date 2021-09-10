@@ -26949,7 +26949,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
-/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
+/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu */ "./resources/js/menu.js");
+/* harmony import */ var _cart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -26959,14 +26960,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* ---------------------------------------- 
 Cart Functionality 
 ---------------------------------------- */
 
-Object(_cart__WEBPACK_IMPORTED_MODULE_2__["addToCart"])();
-Object(_cart__WEBPACK_IMPORTED_MODULE_2__["increaseItemQty"])();
-Object(_cart__WEBPACK_IMPORTED_MODULE_2__["decreaseItemQty"])();
-Object(_cart__WEBPACK_IMPORTED_MODULE_2__["removeItem"])();
+Object(_cart__WEBPACK_IMPORTED_MODULE_3__["addToCart"])();
+Object(_cart__WEBPACK_IMPORTED_MODULE_3__["increaseItemQty"])();
+Object(_cart__WEBPACK_IMPORTED_MODULE_3__["decreaseItemQty"])();
+Object(_cart__WEBPACK_IMPORTED_MODULE_3__["removeItem"])();
+/* ---------------------------------------- 
+Add New Juices 
+---------------------------------------- */
+
+Object(_menu__WEBPACK_IMPORTED_MODULE_2__["default"])();
 /* ---------------------------------------- 
 Socket 
 ---------------------------------------- */
@@ -27122,6 +27129,48 @@ function removeItem() {
         btn.parentElement.parentElement.parentElement.parentElement.remove();
       });
     });
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/menu.js":
+/*!******************************!*\
+  !*** ./resources/js/menu.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return addJuice; });
+var imgDropZone = document.querySelector(".drop_img_container");
+var browseBtn = document.querySelector(".browse_btn");
+var fileInput = document.querySelector("#fileInput");
+function addJuice() {
+  imgDropZone.addEventListener("dragover", function (e) {
+    e.preventDefault();
+
+    if (!imgDropZone.classList.contains("draged")) {
+      imgDropZone.classList.add("draged");
+    }
+  });
+  imgDropZone.addEventListener("dragleave", function (e) {
+    imgDropZone.classList.remove("draged");
+  });
+  imgDropZone.addEventListener("drop", function (e) {
+    e.preventDefault();
+    imgDropZone.classList.remove("draged"); // let file = e.dataTransfer.files;
+    // fileInput.files = file[0];
+    // if (file.lenght) {
+    //   fileInput.files = file;
+    // }
+  });
+  browseBtn.addEventListener("click", function () {
+    fileInput.click();
+  });
+  fileInput.addEventListener("change", function () {
+    imgDropZone.innerHTML = "".concat(fileInput.files[0].name, " is selected.");
   });
 }
 

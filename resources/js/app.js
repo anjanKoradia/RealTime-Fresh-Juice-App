@@ -1,5 +1,6 @@
 import moment from "moment";
 import initAdmin from "./admin";
+import addJuice from "./menu";
 import {
   addToCart,
   decreaseItemQty,
@@ -14,6 +15,11 @@ addToCart();
 increaseItemQty();
 decreaseItemQty();
 removeItem();
+
+/* ---------------------------------------- 
+Add New Juices 
+---------------------------------------- */
+addJuice();
 
 /* ---------------------------------------- 
 Socket 

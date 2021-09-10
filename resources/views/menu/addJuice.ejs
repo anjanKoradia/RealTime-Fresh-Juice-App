@@ -1,27 +1,32 @@
-<section class="edit_item d-flex align-items-center">
+<section class="add_juice d-flex align-items-center">
   <div
     class="container mx-auto d-flex align-items-center justify-content-center"
   >
     <div class="card p-5">
       <div class="title">
-        <h3>Edit Item Details :</h3>
+        <h3 class="fw-bold">Add Juice :</h3>
       </div>
       <div class="row d-flex align-items-center justify-content-center">
-        <div class="col-md-4">
-          <img
-            src="/img/<%= menu.image %>"
-            class="img-fluid rounded-start"
-            alt="<%= menu.name %>"
-          />
+        <div
+          class="drop_img_container col-md-4 d-flex align-items-center justify-content-center flex-column"
+        >
+          <i class="lar la-file-image"></i>
+          <p class="my-2">
+            Drop your image here or, <span class="browse_btn">Browse</span>
+          </p>
         </div>
         <div class="col-md-8 px-4">
-          <form action="/admin/editItem/<%= menu._id %>/update" method="POST">
+          <form
+            method="POST"
+            action="/menu/addJuice"
+            enctype="multipart/form-data"
+          >
+            <input type="file" name="juice_img" id="fileInput" class="d-none" />
             <div class="my-3">
               <label for="juiceNameInput" class="form-label">Juice Name</label>
               <input
                 type="text"
                 name="juice_name"
-                value="<%= menu.name %>"
                 placeholder="Juice Name"
                 class="form-control"
                 id="juiceNameInput"
@@ -34,7 +39,6 @@
               <input
                 type="text"
                 name="quantity"
-                value="<%= menu.quantity %>"
                 placeholder="00 ml/l"
                 class="form-control"
                 id="juiceQuantityInput"
@@ -45,7 +49,6 @@
               <input
                 type="text"
                 name="price"
-                value="<%= menu.price %>"
                 placeholder="00"
                 class="form-control"
                 id="juicePriceInput"
