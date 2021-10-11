@@ -22,7 +22,7 @@ mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
 });
 
 const connection = mongoose.connection;
@@ -88,7 +88,6 @@ app.set("view engine", "ejs");
 global.appRoot = path.resolve(__dirname);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
 
 /* ---------------------------------------- 
   Routes
