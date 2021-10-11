@@ -1,4 +1,3 @@
-const Noty = require("noty");
 const handleMultipartData = require("../../../config/multer");
 const juiceDetailsSchema = require("../../../validator/juiceDetailsValidator");
 const fs = require("fs");
@@ -49,7 +48,7 @@ function menuController() {
         try {
           document = await Menu.create({
             name: juice_name,
-            image: `public/img/juiceImages/${fileName}`,
+            image: `img/juiceImages/${fileName}`,
             quantity,
             price,
           });
