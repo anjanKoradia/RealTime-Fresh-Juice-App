@@ -7,10 +7,10 @@ const menuSchema = new Schema(
     image: {
       type: String,
       require: true,
-      // get: (image) => {
-      //   // http://localhost:5000/uploads/1616443169266-52350494.png
-      //   return `${process.env.APP_URL}/${image}`;
-      // },
+      get: (image) => {
+        // http://localhost:5000/uploads/1616443169266-52350494.png
+        return `${process.env.APP_URL}/${image}`;
+      },
     },
     quantity: { type: String, require: true },
     price: { type: Number, require: true },
