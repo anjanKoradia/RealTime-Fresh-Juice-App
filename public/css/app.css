@@ -748,6 +748,29 @@ body {
   color: blue;
 }
 
+.add_juice .card .drop_img_container .drop_zone_thumb {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #cccccc;
+  background-size: cover;
+  position: relative;
+}
+
+.add_juice .card .drop_img_container .drop_zone_thumb::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  text-align: center;
+}
+
 .add_juice .card form label {
   font-size: 1.1rem;
 }

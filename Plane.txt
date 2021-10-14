@@ -100,3 +100,5 @@
 [.] Increase-Decrease cart item quantity functionality.
 
 [.] Remove item from cart functionality
+
+[.] Add new juices functionality added.
