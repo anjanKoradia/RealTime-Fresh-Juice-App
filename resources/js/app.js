@@ -1,49 +1,16 @@
-import moment from "moment";
 import initAdmin from "./admin";
+import addToCart from "./cart/addItem";
+import manageItemQty from "./cart/itemQty";
 import addJuice from "./menu";
-import {
-  addToCart,
-  decreaseItemQty,
-  increaseItemQty,
-  removeItem,
-} from "./cart";
 
-/* ---------------------------------------- 
-Cart Functionality 
----------------------------------------- */
-addToCart();
-increaseItemQty();
-decreaseItemQty();
-removeItem();
-
-/* ---------------------------------------- 
-Add New Juices 
----------------------------------------- */
-addJuice();
-
-/* ---------------------------------------- 
-Socket 
----------------------------------------- */
 const socket = io();
 
-// Join
-if (order) {
-  socket.emit("join", `order_${order._id}`);
-}
-
-// Update order list in real time
-let adminAreaPath = window.location.pathname;
-if (adminAreaPath.includes("admin")) {
-  socket.emit("join", "adminRoom");
-}
-
-// Update order status in real time
-socket.on("statusUpdated", (data) => {
-  const updatedOrder = { ...order };
-  updatedOrder.updatedAt = moment().format();
-  updatedOrder.status = data.status;
-  updateStatus(updatedOrder);
-});
+// Cart Functionality
+addToCart(socket);
+manageItemQty();
 
 // Display admin orders
 initAdmin(socket);
+
+// Add new juice item
+addJuice();
