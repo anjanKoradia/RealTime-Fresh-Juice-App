@@ -17,22 +17,14 @@ const Emitter = require("events");
   Database connection 
 ---------------------------------------- */
 const url = "mongodb://localhost/fresh_juice";
-
-mongoose.connect(url, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
-
-const connection = mongoose.connection;
-connection
-  .once("open", () => {
+mongoose.connect(url).then(
+  () => {
     console.log("Database connected...");
-  })
-  .catch((err) => {
+  },
+  (err) => {
     console.log("Connection failed...");
-  });
+  }
+);
 
 /* ---------------------------------------- 
   Session config
