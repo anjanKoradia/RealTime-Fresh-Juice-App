@@ -2135,7 +2135,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var socket = io(); // Cart Functionality
+var socket = io();
+var alertMsg = document.querySelectorAll(".alert"); // Alert message timeout
+
+alertMsg.forEach(function (msg) {
+  if (msg) {
+    setTimeout(function () {
+      msg.remove();
+    }, 2000);
+  }
+}); // Cart Functionality
 
 (0,_cart_addItem__WEBPACK_IMPORTED_MODULE_1__["default"])(socket);
 (0,_cart_itemQty__WEBPACK_IMPORTED_MODULE_2__["default"])(); // Display admin orders
@@ -2177,7 +2186,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var cartCounter = document.querySelector(".cart_counter");
 var addToCartBtn = document.querySelectorAll(".add_to_cart_btn");
-var alertMsg = document.querySelector("#order_placed_alert");
 var statuses = document.querySelectorAll(".status_line");
 var hiddenInput = document.querySelector("#hidden_input");
 var order = JSON.parse(hiddenInput ? hiddenInput.value : null);
@@ -2190,7 +2198,7 @@ function updateCart(juice) {
       theme: "metroui",
       type: "success",
       text: "Item added to cart successful.",
-      timeout: 500
+      timeout: 1000
     }).show();
   });
 }
@@ -2227,14 +2235,7 @@ function addToCart(socket) {
       var juice = JSON.parse(btn.dataset.juice);
       updateCart(juice);
     });
-  }); // Alert message on order placed
-
-  if (alertMsg) {
-    setTimeout(function () {
-      alertMsg.remove();
-    }, 2000);
-  }
-
+  });
   updateStatus(order);
   /* ---------------------------------------- 
     Socket 

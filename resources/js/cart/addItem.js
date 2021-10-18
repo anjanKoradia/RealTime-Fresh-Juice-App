@@ -8,7 +8,6 @@ import Noty from "noty";
 
 const cartCounter = document.querySelector(".cart_counter");
 const addToCartBtn = document.querySelectorAll(".add_to_cart_btn");
-const alertMsg = document.querySelector("#order_placed_alert");
 
 const statuses = document.querySelectorAll(".status_line");
 const hiddenInput = document.querySelector("#hidden_input");
@@ -23,7 +22,7 @@ function updateCart(juice) {
       theme: "metroui",
       type: "success",
       text: "Item added to cart successful.",
-      timeout: 500,
+      timeout: 1000,
     }).show();
   });
 }
@@ -60,13 +59,6 @@ export default function addToCart(socket) {
       updateCart(juice);
     });
   });
-
-  // Alert message on order placed
-  if (alertMsg) {
-    setTimeout(() => {
-      alertMsg.remove();
-    }, 2000);
-  }
 
   updateStatus(order);
 

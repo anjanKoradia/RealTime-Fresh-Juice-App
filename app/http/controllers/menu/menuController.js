@@ -89,6 +89,8 @@ function menuController() {
         }
       );
 
+      req.flash("success", "Details update successfully.");
+
       return res.redirect(`/menu/editJuice/${req.params.id}`);
     },
   };

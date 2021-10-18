@@ -4,12 +4,26 @@ hr {
   border: 2px solid #66b447;
 }
 
+.alert-success {
+  background-color: #4bb543 !important;
+  color: #fff !important;
+}
+
+.alert-danger {
+  background-color: #f32013 !important;
+  color: #fff !important;
+}
+
 .noty_body {
   padding: 0.8rem 1.2rem !important;
 }
 
 .noty_theme__metroui {
-  border-radius: 50px !important;
+  border-radius: 0px !important;
+}
+
+.noty_theme__metroui.noty_type__success {
+  background-color: #4bb543 !important;
 }
 
 .btn_orange {
