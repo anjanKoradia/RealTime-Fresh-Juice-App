@@ -5,6 +5,7 @@ const customerOrderController = require("../app/http/controllers/customers/order
 const adminOrderController = require("../app/http/controllers/admin/orderController");
 const addJuiceController = require("../app/http/controllers/admin/addJuiceController");
 const editJuiceController = require("../app/http/controllers/admin/editJuiceController");
+const deleteJuiceController = require("../app/http/controllers/admin/deleteJuiceController");
 
 // Middlewares
 const guest = require("../app/http/middlewares/guest");
@@ -22,6 +23,10 @@ function initRoutes(app) {
   app.post(
     "/admin/menu/editJuice/:id/update",
     editJuiceController().updateDetails
+  );
+  app.delete(
+    "/admin/menu/editJuice/:id/delete",
+    deleteJuiceController().deleteJuice
   );
 
   // Cart Routes

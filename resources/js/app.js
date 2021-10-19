@@ -1,4 +1,5 @@
 import initAdmin from "./admin/admin";
+import deleteJuice from "./admin/deleteJuice";
 import addToCart from "./cart/addItem";
 import manageItemQty from "./cart/itemQty";
 import addJuice from "./menu";
@@ -19,8 +20,14 @@ alertMsg.forEach((msg) => {
 addToCart(socket);
 manageItemQty();
 
+/* ---------------------------------------- 
+  Admin
+---------------------------------------- */
+
 // Display admin orders
 initAdmin(socket);
 
 // Add new juice item
 addJuice();
+
+deleteJuice();

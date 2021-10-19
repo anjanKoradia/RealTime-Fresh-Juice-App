@@ -2119,6 +2119,53 @@ function initAdmin(socket) {
 
 /***/ }),
 
+/***/ "./resources/js/admin/deleteJuice.js":
+/*!*******************************************!*\
+  !*** ./resources/js/admin/deleteJuice.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ deleteJuice)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
+/* ---------------------------------------- 
+  Delete Juice From Memu 
+---------------------------------------- */
+
+
+var deleteJuiceBtn = document.querySelector(".delete_juice_btn");
+
+var deleteRoute = function deleteRoute(juiceId) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]("/admin/menu/editJuice/".concat(juiceId, "/delete")).then(function (res) {
+    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      theme: "metroui",
+      type: "error",
+      text: "Juice deleted successfully from database.",
+      timeout: 2000
+    }).show();
+    setTimeout(function () {
+      window.location.href = "/";
+    }, 2000);
+  });
+};
+
+function deleteJuice() {
+  if (deleteJuiceBtn) {
+    deleteJuiceBtn.addEventListener("click", function () {
+      var juiceId = JSON.parse(deleteJuiceBtn.dataset.juice_id);
+      deleteRoute(juiceId);
+    });
+  }
+}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -2128,9 +2175,11 @@ function initAdmin(socket) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./admin/admin */ "./resources/js/admin/admin.js");
-/* harmony import */ var _cart_addItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cart/addItem */ "./resources/js/cart/addItem.js");
-/* harmony import */ var _cart_itemQty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart/itemQty */ "./resources/js/cart/itemQty.js");
-/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menu */ "./resources/js/menu.js");
+/* harmony import */ var _admin_deleteJuice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin/deleteJuice */ "./resources/js/admin/deleteJuice.js");
+/* harmony import */ var _cart_addItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart/addItem */ "./resources/js/cart/addItem.js");
+/* harmony import */ var _cart_itemQty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cart/itemQty */ "./resources/js/cart/itemQty.js");
+/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menu */ "./resources/js/menu.js");
+
 
 
 
@@ -2146,12 +2195,17 @@ alertMsg.forEach(function (msg) {
   }
 }); // Cart Functionality
 
-(0,_cart_addItem__WEBPACK_IMPORTED_MODULE_1__["default"])(socket);
-(0,_cart_itemQty__WEBPACK_IMPORTED_MODULE_2__["default"])(); // Display admin orders
+(0,_cart_addItem__WEBPACK_IMPORTED_MODULE_2__["default"])(socket);
+(0,_cart_itemQty__WEBPACK_IMPORTED_MODULE_3__["default"])();
+/* ---------------------------------------- 
+  Admin
+---------------------------------------- */
+// Display admin orders
 
 (0,_admin_admin__WEBPACK_IMPORTED_MODULE_0__["default"])(socket); // Add new juice item
 
-(0,_menu__WEBPACK_IMPORTED_MODULE_3__["default"])();
+(0,_menu__WEBPACK_IMPORTED_MODULE_4__["default"])();
+(0,_admin_deleteJuice__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
 /***/ }),
 
