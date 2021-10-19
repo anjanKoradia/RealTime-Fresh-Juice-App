@@ -2054,10 +2054,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/admin.js":
-/*!*******************************!*\
-  !*** ./resources/js/admin.js ***!
-  \*******************************/
+/***/ "./resources/js/admin/admin.js":
+/*!*************************************!*\
+  !*** ./resources/js/admin/admin.js ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2127,7 +2127,7 @@ function initAdmin(socket) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+/* harmony import */ var _admin_admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./admin/admin */ "./resources/js/admin/admin.js");
 /* harmony import */ var _cart_addItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./cart/addItem */ "./resources/js/cart/addItem.js");
 /* harmony import */ var _cart_itemQty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart/itemQty */ "./resources/js/cart/itemQty.js");
 /* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menu */ "./resources/js/menu.js");
@@ -2149,7 +2149,7 @@ alertMsg.forEach(function (msg) {
 (0,_cart_addItem__WEBPACK_IMPORTED_MODULE_1__["default"])(socket);
 (0,_cart_itemQty__WEBPACK_IMPORTED_MODULE_2__["default"])(); // Display admin orders
 
-(0,_admin__WEBPACK_IMPORTED_MODULE_0__["default"])(socket); // Add new juice item
+(0,_admin_admin__WEBPACK_IMPORTED_MODULE_0__["default"])(socket); // Add new juice item
 
 (0,_menu__WEBPACK_IMPORTED_MODULE_3__["default"])();
 
@@ -2372,36 +2372,44 @@ function updateThumbnail(file) {
 }
 
 function addJuice() {
-  browseBtn.addEventListener("click", function () {
-    fileInput.click();
-  });
-  fileInput.addEventListener("change", function (e) {
-    if (fileInput.files.length) {
-      updateThumbnail(fileInput.files[0]);
-    }
-  });
-  imgDropZone.addEventListener("dragover", function (e) {
-    e.preventDefault();
+  if (browseBtn) {
+    browseBtn.addEventListener("click", function () {
+      fileInput.click();
+    });
+  }
 
-    if (!imgDropZone.classList.contains("draged")) {
-      imgDropZone.classList.add("draged");
-    }
-  });
-  ["dragleave", "drop"].forEach(function (type) {
-    imgDropZone.addEventListener(type, function (e) {
+  if (fileInput) {
+    fileInput.addEventListener("change", function (e) {
+      if (fileInput.files.length) {
+        updateThumbnail(fileInput.files[0]);
+      }
+    });
+  }
+
+  if (imgDropZone) {
+    imgDropZone.addEventListener("dragover", function (e) {
+      e.preventDefault();
+
+      if (!imgDropZone.classList.contains("draged")) {
+        imgDropZone.classList.add("draged");
+      }
+    });
+    ["dragleave", "drop"].forEach(function (type) {
+      imgDropZone.addEventListener(type, function (e) {
+        imgDropZone.classList.remove("draged");
+      });
+    });
+    imgDropZone.addEventListener("drop", function (e) {
+      e.preventDefault();
+
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        updateThumbnail(e.dataTransfer.files[0]);
+      }
+
       imgDropZone.classList.remove("draged");
     });
-  });
-  imgDropZone.addEventListener("drop", function (e) {
-    e.preventDefault();
-
-    if (e.dataTransfer.files.length) {
-      fileInput.files = e.dataTransfer.files;
-      updateThumbnail(e.dataTransfer.files[0]);
-    }
-
-    imgDropZone.classList.remove("draged");
-  });
+  }
 }
 
 /***/ }),

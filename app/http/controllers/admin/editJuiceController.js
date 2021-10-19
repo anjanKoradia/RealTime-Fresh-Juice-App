@@ -1,11 +1,11 @@
 const Menu = require("../../../models/menu");
 
-function itemController() {
+function editJuiceController() {
   return {
     index: async (req, res) => {
       const menu = await Menu.findById(req.params.id);
       if (menu) {
-        return res.render("admin/editItem", { menu: menu });
+        return res.render("admin/editJuice", { menu: menu });
       }
 
       return res.redirect("/");
@@ -14,7 +14,7 @@ function itemController() {
     updateDetails: async (req, res) => {
       const { juice_name, quantity, price } = req.body;
 
-      await Menu.updateOne(
+      let result = await Menu.findOneAndUpdate(
         { _id: req.params.id },
         {
           $set: {
@@ -22,12 +22,15 @@ function itemController() {
             quantity: quantity,
             price: price,
           },
-        }
+        },
+        { returnOriginal: false }
       );
 
-      return res.redirect(`/admin/editItem/${req.params.id}`);
+      req.flash("success", "Details update successfully.");
+
+      return res.redirect(`/admin/menu/editJuice/${req.params.id}`);
     },
   };
 }
 
-module.exports = itemController;
+module.exports = editJuiceController;

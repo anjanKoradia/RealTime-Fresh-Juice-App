@@ -11,7 +11,7 @@
       </p>
       <% if(user && user.role == "admin"){ %>
       <a
-        href="/menu/addJuice"
+        href="/admin/menu/addJuice"
         type="button"
         class="add_juice_btn btn btn_orange shop_now_btn my-3"
       >
@@ -41,7 +41,6 @@
     <div class="col-lg-3 col-6">
       <div class="product">
         <img src="<%= juice.image %>" alt="" />
-        <!-- <img src="/img/pomegranate_juice.jpg" alt="" /> -->
         <div class="text-center p-3">
           <h4 class="mb-3"><%= juice.name %></h4>
           <span class="badge bg-secondary rounded-pill text-uppercase px-3"
@@ -50,7 +49,10 @@
           <div class="d-flex align-items-center justify-content-around mt-3">
             <span class="h5 mb-0 fw-bold">Rs. <%= juice.price %></span>
             <% if(user && user.role == "admin") { %>
-            <a href="/menu/editJuice/<%= juice._id %>" class="btn edit_btn">
+            <a
+              href="/admin/menu/editJuice/<%= juice._id %>"
+              class="btn edit_btn"
+            >
               <span class="me-2"><i class="lar la-edit"></i></span>
               <span>Edit</span>
             </a>

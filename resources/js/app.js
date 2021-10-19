@@ -1,4 +1,4 @@
-import initAdmin from "./admin";
+import initAdmin from "./admin/admin";
 import addToCart from "./cart/addItem";
 import manageItemQty from "./cart/itemQty";
 import addJuice from "./menu";

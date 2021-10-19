@@ -32,36 +32,42 @@ function updateThumbnail(file) {
 }
 
 export default function addJuice() {
-  browseBtn.addEventListener("click", () => {
-    fileInput.click();
-  });
+  if (browseBtn) {
+    browseBtn.addEventListener("click", () => {
+      fileInput.click();
+    });
+  }
 
-  fileInput.addEventListener("change", (e) => {
-    if (fileInput.files.length) {
-      updateThumbnail(fileInput.files[0]);
-    }
-  });
+  if (fileInput) {
+    fileInput.addEventListener("change", (e) => {
+      if (fileInput.files.length) {
+        updateThumbnail(fileInput.files[0]);
+      }
+    });
+  }
 
-  imgDropZone.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    if (!imgDropZone.classList.contains("draged")) {
-      imgDropZone.classList.add("draged");
-    }
-  });
+  if (imgDropZone) {
+    imgDropZone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      if (!imgDropZone.classList.contains("draged")) {
+        imgDropZone.classList.add("draged");
+      }
+    });
 
-  ["dragleave", "drop"].forEach((type) => {
-    imgDropZone.addEventListener(type, (e) => {
+    ["dragleave", "drop"].forEach((type) => {
+      imgDropZone.addEventListener(type, (e) => {
+        imgDropZone.classList.remove("draged");
+      });
+    });
+
+    imgDropZone.addEventListener("drop", (e) => {
+      e.preventDefault();
+
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        updateThumbnail(e.dataTransfer.files[0]);
+      }
       imgDropZone.classList.remove("draged");
     });
-  });
-
-  imgDropZone.addEventListener("drop", (e) => {
-    e.preventDefault();
-
-    if (e.dataTransfer.files.length) {
-      fileInput.files = e.dataTransfer.files;
-      updateThumbnail(e.dataTransfer.files[0]);
-    }
-    imgDropZone.classList.remove("draged");
-  });
+  }
 }

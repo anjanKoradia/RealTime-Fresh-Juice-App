@@ -336,13 +336,14 @@ body {
 
 // -------------------- Error Page Styling Start --------------------
 .error_page {
-  min-height: calc(100vh - 86px - 58.4px);
+  height: calc(100vh - 86px - 58.4px);
+
   p {
     font-size: 1.1rem;
   }
 
   img {
-    width: 55%;
+    width: 50%;
   }
 
   .go_back_btn {

@@ -3,23 +3,26 @@ const authController = require("../app/http/controllers/authController");
 const cartController = require("../app/http/controllers/customers/cartController");
 const customerOrderController = require("../app/http/controllers/customers/orderController");
 const adminOrderController = require("../app/http/controllers/admin/orderController");
-const adminItemController = require("../app/http/controllers/admin/itemController");
+const addJuiceController = require("../app/http/controllers/admin/addJuiceController");
+const editJuiceController = require("../app/http/controllers/admin/editJuiceController");
 
 // Middlewares
 const guest = require("../app/http/middlewares/guest");
 const auth = require("../app/http/middlewares/auth");
 const admin = require("../app/http/middlewares/admin");
 const cart = require("../app/http/middlewares/cart");
-const menuController = require("../app/http/controllers/menu/menuController");
 
 function initRoutes(app) {
   app.get("/", homeController().index);
 
   // Menu Routes
-  app.get("/menu/addJuice", menuController().indexAddJuice);
-  app.post("/menu/addJuice", menuController().addJuice);
-  app.get("/menu/editJuice/:id", menuController().indexUpdateDetails);
-  app.post("/menu/editJuice/:id/update", menuController().updateDetails);
+  app.get("/admin/menu/addJuice", addJuiceController().index);
+  app.post("/admin/menu/addJuice", addJuiceController().addJuice);
+  app.get("/admin/menu/editJuice/:id", editJuiceController().index);
+  app.post(
+    "/admin/menu/editJuice/:id/update",
+    editJuiceController().updateDetails
+  );
 
   // Cart Routes
   app.get("/cart", cart, cartController().index);

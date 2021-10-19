@@ -3,10 +3,10 @@ const juiceDetailsSchema = require("../../../validator/juiceDetailsValidator");
 const fs = require("fs");
 const Menu = require("../../../models/menu");
 
-function menuController() {
+function addJuiceController() {
   return {
-    indexAddJuice: (req, res) => {
-      res.render("menu/addJuice");
+    index: (req, res) => {
+      res.render("admin/addJuice");
     },
 
     addJuice: (req, res, next) => {
@@ -65,35 +65,7 @@ function menuController() {
         res.redirect(`/menu/editJuice/${document._id}`);
       });
     },
-
-    indexUpdateDetails: async (req, res) => {
-      const menu = await Menu.findById(req.params.id);
-      if (menu) {
-        return res.render("menu/editJuice", { menu: menu });
-      }
-
-      return res.redirect("/");
-    },
-
-    updateDetails: async (req, res) => {
-      const { juice_name, quantity, price } = req.body;
-
-      await Menu.updateOne(
-        { _id: req.params.id },
-        {
-          $set: {
-            name: juice_name,
-            quantity: quantity,
-            price: price,
-          },
-        }
-      );
-
-      req.flash("success", "Details update successfully.");
-
-      return res.redirect(`/menu/editJuice/${req.params.id}`);
-    },
   };
 }
 
-module.exports = menuController;
+module.exports = addJuiceController;

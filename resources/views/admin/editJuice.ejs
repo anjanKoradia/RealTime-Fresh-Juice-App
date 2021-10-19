@@ -1,32 +1,53 @@
-<section class="add_juice d-flex align-items-center">
+<section class="edit_juice d-flex align-items-center">
   <div
     class="container mx-auto d-flex align-items-center justify-content-center"
   >
     <div class="card p-5">
+      <% if(messages.success) { %>
+      <div
+        class="alert alert-success py-2 px-3 mb-4 d-flex align-items-center"
+        role="alert"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          class="bi bi-check2-circle mx-2"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+          />
+          <path
+            d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
+          />
+        </svg>
+        <%= messages.success %>
+      </div>
+      <% } %>
       <div class="title">
-        <h3 class="fw-bold">Add Juice :</h3>
+        <h3>Edit Item Details :</h3>
       </div>
       <div class="row d-flex align-items-center justify-content-center">
-        <div
-          class="drop_img_container col-md-4 d-flex align-items-center justify-content-center flex-column p-2"
-        >
-          <i class="lar la-file-image"></i>
-          <p class="my-2">
-            Drop your image here or, <span class="browse_btn">Browse</span>
-          </p>
+        <div class="col-md-4">
+          <img
+            src="<%= menu.image %>"
+            class="img-fluid rounded-start"
+            alt="<%= menu.name %>"
+          />
         </div>
         <div class="col-md-8 px-4">
           <form
+            action="/admin/menu/editJuice/<%= menu._id %>/update"
             method="POST"
-            action="/menu/addJuice"
-            enctype="multipart/form-data"
           >
-            <input type="file" name="juice_img" id="fileInput" class="d-none" />
             <div class="my-3">
               <label for="juiceNameInput" class="form-label">Juice Name</label>
               <input
                 type="text"
                 name="juice_name"
+                value="<%= menu.name %>"
                 placeholder="Juice Name"
                 class="form-control"
                 id="juiceNameInput"
@@ -39,6 +60,7 @@
               <input
                 type="text"
                 name="quantity"
+                value="<%= menu.quantity %>"
                 placeholder="00 ml/l"
                 class="form-control"
                 id="juiceQuantityInput"
@@ -49,14 +71,13 @@
               <input
                 type="text"
                 name="price"
+                value="<%= menu.price %>"
                 placeholder="00"
                 class="form-control"
                 id="juicePriceInput"
               />
             </div>
-            <button type="submit" class="btn btn_orange w-25 my-2">
-              Save
-            </button>
+            <button type="submit" class="btn btn_orange w-25 my-2">Save</button>
           </form>
         </div>
       </div>

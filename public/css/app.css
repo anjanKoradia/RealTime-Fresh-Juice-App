@@ -624,13 +624,13 @@ body {
 }
 
 .error_page {
-  min-height: calc(100vh - 86px - 58.4px);
+  height: calc(100vh - 86px - 58.4px);
 }
 .error_page p {
   font-size: 1.1rem;
 }
 .error_page img {
-  width: 55%;
+  width: 50%;
 }
 .error_page .go_back_btn {
   padding: 0.2rem 1rem;
