@@ -62,7 +62,7 @@ function addJuiceController() {
         }
 
         res.status(201);
-        res.redirect(`/admin/menu/editJuice/${document._id}`);
+        res.redirect("/");
       });
     },
   };

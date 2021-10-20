@@ -1,3 +1,7 @@
+/* ---------------------------------------- 
+  Add Juice To Menu
+---------------------------------------- */
+
 const imgDropZone = document.querySelector(".drop_img_container");
 const browseBtn = document.querySelector(".browse_btn");
 const fileInput = document.querySelector("#fileInput");
@@ -30,7 +34,6 @@ function updateThumbnail(file) {
     thumbnailElement.style.backgroundImage = null;
   }
 }
-
 export default function addJuice() {
   if (browseBtn) {
     browseBtn.addEventListener("click", () => {
