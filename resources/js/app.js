@@ -3,6 +3,7 @@ import deleteJuice from "./admin/deleteJuice";
 import addToCart from "./cart/addItem";
 import manageItemQty from "./cart/itemQty";
 import addJuice from "./admin/addjuice";
+import placeOrder from "./cart/placeOrder";
 
 const socket = io();
 const alertMsg = document.querySelectorAll(".alert");
@@ -16,17 +17,16 @@ alertMsg.forEach((msg) => {
   }
 });
 
-// Cart Functionality
+/* ---------------------------------------- 
+  Cart
+---------------------------------------- */
 addToCart(socket);
 manageItemQty();
+placeOrder();
 
 /* ---------------------------------------- 
   Admin
 ---------------------------------------- */
-
-// Display admin orders
 initAdmin(socket);
-
-// Add new juice item
 addJuice();
 deleteJuice();

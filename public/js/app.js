@@ -2268,6 +2268,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cart_addItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./cart/addItem */ "./resources/js/cart/addItem.js");
 /* harmony import */ var _cart_itemQty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cart/itemQty */ "./resources/js/cart/itemQty.js");
 /* harmony import */ var _admin_addjuice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./admin/addjuice */ "./resources/js/admin/addjuice.js");
+/* harmony import */ var _cart_placeOrder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cart/placeOrder */ "./resources/js/cart/placeOrder.js");
+
 
 
 
@@ -2282,17 +2284,19 @@ alertMsg.forEach(function (msg) {
       msg.remove();
     }, 2000);
   }
-}); // Cart Functionality
+});
+/* ---------------------------------------- 
+  Cart
+---------------------------------------- */
 
 (0,_cart_addItem__WEBPACK_IMPORTED_MODULE_2__["default"])(socket);
 (0,_cart_itemQty__WEBPACK_IMPORTED_MODULE_3__["default"])();
+(0,_cart_placeOrder__WEBPACK_IMPORTED_MODULE_5__["default"])();
 /* ---------------------------------------- 
   Admin
 ---------------------------------------- */
-// Display admin orders
 
-(0,_admin_admin__WEBPACK_IMPORTED_MODULE_0__["default"])(socket); // Add new juice item
-
+(0,_admin_admin__WEBPACK_IMPORTED_MODULE_0__["default"])(socket);
 (0,_admin_addjuice__WEBPACK_IMPORTED_MODULE_4__["default"])();
 (0,_admin_deleteJuice__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
@@ -2467,6 +2471,94 @@ function manageItemQty() {
       });
     });
   });
+}
+
+/***/ }),
+
+/***/ "./resources/js/cart/placeOrder.js":
+/*!*****************************************!*\
+  !*** ./resources/js/cart/placeOrder.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ placeOrder)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
+/* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+var orderForm = document.querySelector("#order_form");
+
+function postOrder(data) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/orders", data).then(function (res) {
+    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      theme: "metroui",
+      type: res.data.status,
+      text: res.data.message,
+      timeout: 1000
+    }).show();
+
+    if (res.data.status == "success") {
+      setTimeout(function () {
+        window.location.href = "/customer/orders";
+      }, 1200);
+    }
+  })["catch"](function (err) {
+    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      theme: "metroui",
+      type: "error",
+      text: err,
+      timeout: 1000
+    }).show();
+  });
+}
+
+function placeOrder() {
+  if (orderForm) {
+    orderForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var formData = new FormData(orderForm);
+      var formDataObj = {};
+
+      var _iterator = _createForOfIteratorHelper(formData.entries()),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var _step$value = _slicedToArray(_step.value, 2),
+              key = _step$value[0],
+              value = _step$value[1];
+
+          formDataObj[key] = value;
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      postOrder(formDataObj);
+    });
+  }
 }
 
 /***/ }),

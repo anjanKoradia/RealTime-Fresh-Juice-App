@@ -15,8 +15,7 @@ function orderController() {
       // Validate request
       const { phone_number, address } = req.body;
       if (!phone_number || !address) {
-        req.flash("error", "All fields are required.");
-        return res.redirect("/cart");
+        return res.json({ "status": "error", "message": "All fields are required." });
       }
 
       const order = new Order({
@@ -31,19 +30,17 @@ function orderController() {
         .save()
         .then((order) => {
           Order.populate(order, { path: "customer_id" }, (error, result) => {
-            req.flash("success", "Order placed successfully.");
             delete req.session.cart;
 
             // Emit event (this is for update order list realtime in admin panel)
             const eventEmitter = req.app.get("eventEmitter");
             eventEmitter.emit("orderPalced", result);
 
-            return res.redirect("/customer/orders");
+            return res.json({ "status": "success", "message": "Order placed successfully." });
           });
         })
         .catch((error) => {
-          req.flash("erroe", "Somthing went wrong");
-          return res.redirect("/cart");
+          return res.json({ "status": "error", "message": "Somthing went wrong." });
         });
     },
 
