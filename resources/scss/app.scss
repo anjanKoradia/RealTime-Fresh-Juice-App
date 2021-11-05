@@ -1,5 +1,6 @@
 @import "./variables";
 @import "./utility";
+@import "./mediaQuery";
 @import "~noty/src/noty.scss";
 @import "~noty/src/themes/mint.scss";
 @import "~noty/src/themes/metroui.scss";
@@ -44,7 +45,7 @@ body {
 // -------------------- Hero Section Styling Start --------------------
 .hero {
   background-color: $secondary;
-  height: calc(100vh - 86px);
+  min-height: calc(100vh - 86px);
 
   h1 {
     font-size: 3.5rem;
@@ -123,6 +124,7 @@ body {
 // -------------------- Cart Page Styling Start --------------------
 .cart {
   background-color: $secondary;
+  min-height: calc(100vh - 86px - 58.4px);
 
   .cart_order {
     .la-shopping-cart {

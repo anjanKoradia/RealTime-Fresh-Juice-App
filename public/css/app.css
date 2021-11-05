@@ -54,6 +54,102 @@ hr {
   transition: all 0.2s ease-in-out;
 }
 
+hr {
+  width: 60px;
+  margin: 0.8rem auto 3rem auto;
+  border: 2px solid #66b447;
+}
+
+.alert-success {
+  background-color: #4bb543 !important;
+  color: #fff !important;
+}
+
+.alert-danger {
+  background-color: #f32013 !important;
+  color: #fff !important;
+}
+
+.noty_body {
+  padding: 0.8rem 1.2rem !important;
+}
+
+.noty_theme__metroui {
+  border-radius: 0px !important;
+}
+
+.noty_theme__metroui.noty_type__success {
+  background-color: #4bb543 !important;
+}
+
+.btn_orange {
+  background-color: #66b447;
+  color: #fff;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  outline: none;
+}
+.btn_orange:hover {
+  background-color: transparent;
+  border: 2px solid #66b447;
+  color: #66b447;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn_red {
+  background-color: transparent;
+  color: #dc3545;
+  border-radius: 50px;
+  border: 2px solid #dc3545;
+  outline: none;
+}
+.btn_red:hover {
+  background-color: #dc3545;
+  border: 2px solid #dc3545;
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 767px) {
+  .hero .container {
+    flex-direction: column;
+    margin: 5rem 0;
+  }
+  .hero .container > div:nth-child(1) {
+    width: 100% !important;
+  }
+  .hero .container > div:nth-child(2) {
+    width: 75% !important;
+  }
+}
+@media (max-width: 576px) {
+  .hero .container h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  .hero .container p {
+    font-size: 1rem;
+  }
+  .hero .container .shop_now_btn {
+    font-size: 1rem;
+    padding: 0.2rem 1rem;
+  }
+}
+@media (max-width: 992px) and (min-width: 768px) {
+  .menu .product {
+    margin: 0 1rem;
+  }
+}
+@media (max-width: 576px) {
+  .menu .product {
+    margin: 0 5rem;
+  }
+}
+@media (max-width: 480px) {
+  .menu .product {
+    margin: 0 2rem;
+  }
+}
 .noty_layout_mixin, #noty_layout__centerRight, #noty_layout__centerLeft, #noty_layout__center, #noty_layout__bottomRight, #noty_layout__bottomCenter, #noty_layout__bottomLeft, #noty_layout__bottom, #noty_layout__topRight, #noty_layout__topCenter, #noty_layout__topLeft, #noty_layout__top {
   position: fixed;
   margin: 0;
@@ -417,7 +513,7 @@ body {
 
 .hero {
   background-color: #f8f8f8;
-  height: calc(100vh - 86px);
+  min-height: calc(100vh - 86px);
 }
 .hero h1 {
   font-size: 3.5rem;
@@ -480,6 +576,7 @@ body {
 
 .cart {
   background-color: #f8f8f8;
+  min-height: calc(100vh - 86px - 58.4px);
 }
 .cart .cart_order .la-shopping-cart {
   font-size: 2.5rem;

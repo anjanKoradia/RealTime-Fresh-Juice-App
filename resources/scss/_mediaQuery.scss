@@ -1,0 +1,61 @@
+@import "./variables";
+@import "./utility";
+
+// -------------------- Hero Section Styling Start --------------------
+@media (max-width: 767px) {
+  .hero {
+    .container {
+      flex-direction: column;
+      margin: 5rem 0;
+
+      > div:nth-child(1) {
+        width: 100% !important;
+      }
+      > div:nth-child(2) {
+        width: 75% !important;
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .hero {
+    .container {
+      h1 {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .shop_now_btn {
+        font-size: 1rem;
+        padding: 0.2rem 1rem;
+      }
+    }
+  }
+}
+// -------------------- Hero Section Styling End --------------------
+
+// -------------------- Menu Section Styling Start --------------------
+@media (max-width: 992px) and (min-width: 768px) {
+  .menu {
+    .product {
+      margin: 0 1rem;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .menu {
+    .product {
+      margin: 0 5rem;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .menu {
+    .product {
+      margin: 0 2rem;
+    }
+  }
+}
+// -------------------- Menu Section Styling End --------------------
