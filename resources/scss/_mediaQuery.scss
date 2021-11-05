@@ -59,3 +59,28 @@
   }
 }
 // -------------------- Menu Section Styling End --------------------
+
+// -------------------- Login-Register Page Styling Start --------------------
+@media (max-width: 480px) {
+  .login,
+  .register {
+    form {
+      margin: 4rem 1rem !important;
+
+      .from_btns {
+        flex-direction: column !important;
+
+        a {
+          margin-top: 1rem;
+        }
+      }
+
+      .login_btn,
+      .sign_up_btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// -------------------- Login-Register Page Styling End --------------------

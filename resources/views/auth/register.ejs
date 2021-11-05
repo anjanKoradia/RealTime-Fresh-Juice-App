@@ -36,14 +36,16 @@
           id="inputPassword"
         />
       </div>
-      <div class="mt-4 d-flex align-items-center justify-content-between">
+      <div
+        class="from_btns mt-4 d-flex align-items-center justify-content-between"
+      >
         <button type="submit" class="btn btn_orange sign_up_btn">
           Sign Up
         </button>
         <a href="/login" class="text-decoration-none">Alredy have account?</a>
       </div>
       <% if(messages.error) { %>
-      <p class="mb-0  text-danger"><%= messages.error %></p>
+      <p class="mb-0 text-danger"><%= messages.error %></p>
       <% } %>
     </form>
   </div>

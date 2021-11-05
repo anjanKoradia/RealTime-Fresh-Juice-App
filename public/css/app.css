@@ -150,6 +150,26 @@ hr {
     margin: 0 2rem;
   }
 }
+@media (max-width: 480px) {
+  .login form,
+.register form {
+    margin: 4rem 1rem !important;
+  }
+  .login form .from_btns,
+.register form .from_btns {
+    flex-direction: column !important;
+  }
+  .login form .from_btns a,
+.register form .from_btns a {
+    margin-top: 1rem;
+  }
+  .login form .login_btn,
+.login form .sign_up_btn,
+.register form .login_btn,
+.register form .sign_up_btn {
+    width: 100%;
+  }
+}
 .noty_layout_mixin, #noty_layout__centerRight, #noty_layout__centerLeft, #noty_layout__center, #noty_layout__bottomRight, #noty_layout__bottomCenter, #noty_layout__bottomLeft, #noty_layout__bottom, #noty_layout__topRight, #noty_layout__topCenter, #noty_layout__topLeft, #noty_layout__top {
   position: fixed;
   margin: 0;
@@ -626,7 +646,7 @@ body {
 .login form,
 .register form {
   background-color: #fff;
-  width: 450px;
+  max-width: 450px;
   border-radius: 5px;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3);
 }
