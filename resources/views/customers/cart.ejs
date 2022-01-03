@@ -7,8 +7,8 @@
     </div>
     <div class="order_list border-bottom border-2 pb-5">
       <% for(let juice of Object.values(session.cart.items)) { %>
-      <div>
-        <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center w-75">
           <img src="<%= juice.item.image %>" alt="" />
           <div class="ms-4">
             <h4 class="mb-1"><%= juice.item.name %></h4>
@@ -28,16 +28,22 @@
             </p>
           </div>
         </div>
-        <div class="qty d-flex align-items-center justify-content-evenly">
-          <a class="decrease_qty" data-cartjuice="<%= JSON.stringify(juice) %>"
-            ><i class="las la-minus-circle"></i
-          ></a>
-          <h5 class="mb-0 cart_item_qty"><%= juice.qty %></h5>
-          <a class="increase_qty" data-cartjuice="<%= JSON.stringify(juice) %>"
-            ><i class="las la-plus-circle"></i
-          ></a>
+        <div class="d-flex align-items-center justify-content-between w-25">
+          <div class="qty d-flex align-items-center">
+            <a
+              class="decrease_qty"
+              data-cartjuice="<%= JSON.stringify(juice) %>"
+              ><i class="las la-minus-circle"></i
+            ></a>
+            <h5 class="mb-0 px-1 cart_item_qty"><%= juice.qty %></h5>
+            <a
+              class="increase_qty"
+              data-cartjuice="<%= JSON.stringify(juice) %>"
+              ><i class="las la-plus-circle"></i
+            ></a>
+          </div>
+          <h5 class="fw-bold mb-0">Rs. <%= juice.item.price %></h5>
         </div>
-        <h5 class="fw-bold mb-0">Rs. <%= juice.item.price %></h5>
       </div>
       <% } %>
     </div>

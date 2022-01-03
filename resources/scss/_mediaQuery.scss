@@ -82,5 +82,92 @@
     }
   }
 }
-
 // -------------------- Login-Register Page Styling End --------------------
+
+// -------------------- Cart Page Styling Start --------------------
+@media (max-width: 1300px) {
+  .cart {
+    .cart_order {
+      width: 60% !important;
+    }
+  }
+}
+@media (max-width: 1080px) {
+  .cart {
+    .cart_order {
+      width: 70% !important;
+    }
+  }
+}
+@media (max-width: 880px) {
+  .cart {
+    .cart_order {
+      width: 80% !important;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .cart {
+    .cart_order {
+      width: 100% !important;
+
+      .order_list {
+        img {
+          width: 130px !important;
+          height: 130px !important;
+        }
+
+        h4 {
+          font-size: 1.3rem;
+        }
+      }
+
+      form {
+        width: 75% !important;
+      }
+    }
+  }
+}
+@media (max-width: 560px) {
+  .cart {
+    .order_list {
+      > div {
+        flex-direction: column;
+
+        > div:nth-child(1) {
+          width: 75% !important;
+        }
+        > div:nth-child(2) {
+          margin-top: 1rem;
+          width: 60% !important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 460px) {
+  .cart {
+    .order_list {
+      > div {
+        flex-direction: column;
+
+        > div:nth-child(1) {
+          width: 100% !important;
+        }
+        > div:nth-child(2) {
+          width: 80% !important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 450px) {
+  .cart {
+    .cart_order {
+      form {
+        width: 95% !important;
+      }
+    }
+  }
+}
+// -------------------- Cart Page Styling End --------------------

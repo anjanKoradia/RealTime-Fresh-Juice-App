@@ -138,11 +138,7 @@ body {
       }
 
       > div {
-        display: grid;
-        grid-template-columns: 1fr 0.2fr 0.4fr;
-        grid-template-rows: 1fr;
-        align-items: center;
-        margin: 2rem 0;
+        margin: 3rem 0;
 
         h5 {
           text-align: center;
