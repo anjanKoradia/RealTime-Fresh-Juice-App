@@ -567,6 +567,10 @@ body {
   color: #232323;
 }
 
+table * {
+  white-space: nowrap;
+}
+
 .navbar {
   font-weight: bold;
 }

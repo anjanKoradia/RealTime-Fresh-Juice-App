@@ -14,7 +14,9 @@ body {
   font-family: "Lato", sans-serif;
   color: $dark;
 }
-
+table * {
+  white-space: nowrap;
+}
 // -------------------- Navbar Styling Start --------------------
 .navbar {
   font-weight: bold;
