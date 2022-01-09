@@ -376,10 +376,12 @@ table * {
 // -------------------- Add Juice Page Styling Start --------------------
 .add_juice {
   background-color: $secondary;
-  height: calc(100vh - 86px - 58.4px);
+  height: 100%;
+  min-height: 100vh;
 
   .card {
     width: 80%;
+    margin: 10rem 0 5rem 0;
 
     .drop_img_container {
       border: 2px dashed $primary;

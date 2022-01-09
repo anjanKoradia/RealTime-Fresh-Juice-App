@@ -171,3 +171,71 @@
   }
 }
 // -------------------- Cart Page Styling End --------------------
+
+// -------------------- Add Juice Page Styling Start --------------------
+@media (max-width: 992px) {
+  .add_juice {
+    .card {
+      width: 100% !important;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .add_juice {
+    .card {
+      .drop_img_container {
+        margin: 1rem 2rem;
+        width: 90% !important;
+      }
+
+      form {
+        button {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 575px) {
+  .add_juice {
+    .card {
+      padding: 2rem !important;
+      margin: 10rem 2rem 5rem 2rem !important;
+
+      .drop_img_container {
+        margin: 1rem;
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .add_juice {
+    .card {
+      padding: 2rem;
+      margin: 10rem 1rem 5rem 1rem !important;
+
+      .drop_img_container {
+        margin: 1rem;
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  .add_juice {
+    .card {
+      margin: 10rem 0 5rem 0 !important;
+      padding: 1rem !important;
+
+      .row {
+        .drop_img_container {
+          margin: 1rem;
+        }
+
+        > div:nth-child(2) {
+          padding: 0 1rem !important;
+        }
+      }
+    }
+  }
+}
+// -------------------- Add Juice Page Styling End --------------------
