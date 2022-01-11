@@ -696,7 +696,7 @@ table * {
 
 .hero {
   background-color: #f8f8f8;
-  min-height: calc(100vh - 86px);
+  height: 100vh;
 }
 .hero h1 {
   font-size: 3.5rem;
@@ -759,7 +759,8 @@ table * {
 
 .cart {
   background-color: #f8f8f8;
-  min-height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 }
 .cart .cart_order .la-shopping-cart {
   font-size: 2.5rem;
@@ -785,7 +786,8 @@ table * {
   color: #66b447;
 }
 .cart .empty_cart {
-  height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 }
 .cart .empty_cart p {
   font-size: 1.1rem;
@@ -795,12 +797,14 @@ table * {
 }
 .cart .empty_cart .go_back_btn {
   padding: 0.2rem 1rem;
+  margin: 1rem 0;
 }
 
 .login,
 .register {
   background-color: #f8f8f8;
-  min-height: calc(100vh - 145px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 }
 .login form,
 .register form {
@@ -818,7 +822,8 @@ table * {
 
 .orders {
   background-color: #f8f8f8;
-  min-height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 }
 .orders .order_table th,
 .orders .order_table td {
@@ -835,7 +840,8 @@ table * {
 
 .order_status {
   background-color: #f8f8f8;
-  height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 }
 .order_status ul {
   margin: 2rem 0 0 2.8rem;

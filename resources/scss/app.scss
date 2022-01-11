@@ -17,6 +17,7 @@ body {
 table * {
   white-space: nowrap;
 }
+
 // -------------------- Navbar Styling Start --------------------
 .navbar {
   font-weight: bold;
@@ -47,7 +48,7 @@ table * {
 // -------------------- Hero Section Styling Start --------------------
 .hero {
   background-color: $secondary;
-  min-height: calc(100vh - 86px);
+  height: 100vh;
 
   h1 {
     font-size: 3.5rem;
@@ -126,7 +127,8 @@ table * {
 // -------------------- Cart Page Styling Start --------------------
 .cart {
   background-color: $secondary;
-  min-height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 
   .cart_order {
     .la-shopping-cart {
@@ -164,7 +166,8 @@ table * {
   }
 
   .empty_cart {
-    height: calc(100vh - 86px - 58.4px);
+    margin-top: 5rem;
+    min-height: calc(100vh - 5rem - 58.4px);
 
     p {
       font-size: 1.1rem;
@@ -176,6 +179,7 @@ table * {
 
     .go_back_btn {
       padding: 0.2rem 1rem;
+      margin: 1rem 0;
     }
   }
 }
@@ -185,7 +189,8 @@ table * {
 .login,
 .register {
   background-color: $secondary;
-  min-height: calc(100vh - 145px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 
   form {
     background-color: $pure;
@@ -204,7 +209,8 @@ table * {
 // -------------------- Order Page Styling Start --------------------
 .orders {
   background-color: $secondary;
-  min-height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 
   .order_table {
     th,
@@ -229,7 +235,8 @@ table * {
 // -------------------- Order Status Page Styling Start --------------------
 .order_status {
   background-color: $secondary;
-  height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 
   ul {
     margin: 2rem 0 0 2.8rem;
