@@ -45,6 +45,21 @@ export default function manageItemQty() {
     btn.addEventListener("click", (e) => {
       let juice = JSON.parse(btn.dataset.cartjuice);
       axios.delete(`/cart/remove-item/${juice.item._id}`).then((res) => {
+        if (res.data.cart.totalQty <= 0) {
+          document.querySelector(".cart").innerHTML = `
+            <div class="empty_cart py-5">
+              <div class="container text-center">
+                <h3 class="fw-bold">Cart Is Empty 😕</h3>
+                <p class="text-muted">
+                  You probably haven't ordered a juice yet. To order a juice, go to the
+                  main page.
+                </p>
+                <img class="d-block mx-auto my-4" src="/img/empty_cart.png" alt="" />
+                <a href="/" class="btn btn_orange go_back_btn">Go Back</a>
+              </div>
+            </div>
+            `
+        }
         setValues(res, juice);
         btn.parentElement.parentElement.parentElement.parentElement.remove();
       });

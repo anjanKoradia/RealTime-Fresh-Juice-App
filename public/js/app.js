@@ -2466,6 +2466,10 @@ function manageItemQty() {
     btn.addEventListener("click", function (e) {
       var juice = JSON.parse(btn.dataset.cartjuice);
       axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]("/cart/remove-item/".concat(juice.item._id)).then(function (res) {
+        if (res.data.cart.totalQty <= 0) {
+          document.querySelector(".cart").innerHTML = "\n            <div class=\"empty_cart py-5\">\n              <div class=\"container text-center\">\n                <h3 class=\"fw-bold\">Cart Is Empty \uD83D\uDE15</h3>\n                <p class=\"text-muted\">\n                  You probably haven't ordered a juice yet. To order a juice, go to the\n                  main page.\n                </p>\n                <img class=\"d-block mx-auto my-4\" src=\"/img/empty_cart.png\" alt=\"\" />\n                <a href=\"/\" class=\"btn btn_orange go_back_btn\">Go Back</a>\n              </div>\n            </div>\n            ";
+        }
+
         setValues(res, juice);
         btn.parentElement.parentElement.parentElement.parentElement.remove();
       });

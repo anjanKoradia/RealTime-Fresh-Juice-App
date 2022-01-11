@@ -1,7 +1,11 @@
 function cartController() {
   return {
     index: (req, res) => {
-      res.render("customers/cart");
+      if (req.session.cart.totalQty > 0) {
+        return res.render("customers/cart");
+      }
+
+      res.render("customers/emptyCart");
     },
 
     update: (req, res) => {
@@ -54,7 +58,7 @@ function cartController() {
 
       delete cart.items[id];
 
-      return res.json({ cart: req.session.cart });
+      res.json({ cart: req.session.cart });
     },
 
     increaseItemQty: (req, res) => {
@@ -65,9 +69,7 @@ function cartController() {
       cart.totalPrice += cart.items[id].item.price;
       cart.totalQty++;
 
-      return res.json({
-        cart: req.session.cart,
-      });
+      return res.json({ cart: req.session.cart });
     },
 
     decreaseItemQty: (req, res) => {
@@ -80,9 +82,7 @@ function cartController() {
         cart.totalQty--;
       }
 
-      return res.json({
-        cart: req.session.cart,
-      });
+      return res.json({ cart: req.session.cart });
     },
   };
 }
