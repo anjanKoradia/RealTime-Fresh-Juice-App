@@ -920,7 +920,8 @@ table * {
 }
 
 .error_page {
-  height: calc(100vh - 86px - 58.4px);
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem - 58.4px);
 }
 .error_page p {
   font-size: 1.1rem;
