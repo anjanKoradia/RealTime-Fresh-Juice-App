@@ -239,3 +239,94 @@
   }
 }
 // -------------------- Add Juice Page Styling End --------------------
+
+// -------------------- Edit Item Page Styling Start --------------------
+@media (max-width: 1220px) {
+  .edit_juice {
+    .card {
+      width: 90% !important;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .edit_juice {
+    .card {
+      width: 100% !important;
+
+      .row {
+        > div:nth-child(2) {
+          padding: 0 1rem !important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .edit_juice {
+    .card {
+      .row {
+        > div:nth-child(1) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            margin: 1rem 0;
+          }
+        }
+
+        > div:nth-child(2) {
+          padding: 0 2rem !important;
+        }
+
+        form {
+          > div:nth-child(4) {
+            display: flex;
+            align-items: center;
+            justify-items: center;
+
+            button,
+            a {
+              width: 100% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 575px) {
+  .edit_juice {
+    .card {
+      padding: 2rem !important;
+      margin: 10rem 1rem 5rem 1rem !important;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .edit_juice {
+    .card {
+      margin: 10rem 0 5rem 0 !important;
+
+      .row {
+        > div:nth-child(2) {
+          padding: 0 1rem !important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 375px) {
+  .edit_juice {
+    .card {
+      padding: 1rem !important;
+
+      .row {
+        > div:nth-child(2) {
+          padding: 0 1rem !important;
+        }
+      }
+    }
+  }
+}
+// -------------------- Edit Item Page Styling End --------------------
