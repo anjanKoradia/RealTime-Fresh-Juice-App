@@ -1,8 +1,10 @@
 function cartController() {
   return {
     index: (req, res) => {
-      if (req.session.cart.totalQty > 0) {
-        return res.render("customers/cart");
+      if (req.session.cart) {
+        if (req.session.cart.totalQty > 0) {
+          return res.render("customers/cart");
+        }
       }
 
       res.render("customers/emptyCart");
