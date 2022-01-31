@@ -2512,8 +2512,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 var orderForm = document.querySelector("#order_form");
 
-function postOrder(data) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/orders", data).then(function (res) {
+function checkPaymentStatus(paymentDetails) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/order/razorpay/is-order-complete", paymentDetails).then(function (res) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       theme: "metroui",
       type: res.data.status,
@@ -2526,6 +2526,39 @@ function postOrder(data) {
         window.location.href = "/customer/orders";
       }, 1200);
     }
+  })["catch"](function (err) {
+    new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
+      theme: "metroui",
+      type: "error",
+      text: err,
+      timeout: 1000
+    }).show();
+  });
+}
+
+function payAmount(data) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().post("/order/razorpay", data).then(function (res) {
+    var options = {
+      "key": "rzp_test_P6nkgTUu6ZV0hy",
+      "amount": res.data.amount,
+      "currency": "INR",
+      "name": "Fresh Juice",
+      "description": "Juice Order",
+      "order_id": res.data.id,
+      "handler": function handler(res) {
+        checkPaymentStatus(res);
+      },
+      "prefill": {
+        "name": res.data.notes.customer_name,
+        "email": res.data.notes.customer_email,
+        "contact": res.data.notes.customer_number
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
   })["catch"](function (err) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       theme: "metroui",
@@ -2560,7 +2593,7 @@ function placeOrder() {
         _iterator.f();
       }
 
-      postOrder(formDataObj);
+      payAmount(formDataObj);
     });
   }
 }

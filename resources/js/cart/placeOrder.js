@@ -3,8 +3,8 @@ import Noty from "noty";
 
 const orderForm = document.querySelector("#order_form")
 
-function postOrder(data) {
-    axios.post("/orders", data).then(res => {
+function checkPaymentStatus(paymentDetails) {
+    axios.post("/order/razorpay/is-order-complete", paymentDetails).then((res) => {
         new Noty({
             theme: "metroui",
             type: res.data.status,
@@ -17,6 +17,40 @@ function postOrder(data) {
                 window.location.href = "/customer/orders";
             }, 1200);
         }
+    }).catch((err) => {
+        new Noty({
+            theme: "metroui",
+            type: "error",
+            text: err,
+            timeout: 1000,
+        }).show();
+    })
+}
+
+function payAmount(data) {
+    axios.post("/order/razorpay", data).then(res => {
+        let options = {
+            "key": "rzp_test_P6nkgTUu6ZV0hy",
+            "amount": res.data.amount,
+            "currency": "INR",
+            "name": "Fresh Juice",
+            "description": "Juice Order",
+            "order_id": res.data.id,
+            "handler": function (res) {
+                checkPaymentStatus(res);
+            },
+            "prefill": {
+                "name": res.data.notes.customer_name,
+                "email": res.data.notes.customer_email,
+                "contact": res.data.notes.customer_number
+            },
+            "theme": {
+                "color": "#3399cc"
+            },
+        };
+
+        let rzp1 = new Razorpay(options);
+        rzp1.open();
     }).catch(err => {
         new Noty({
             theme: "metroui",
@@ -38,8 +72,7 @@ export default function placeOrder() {
             for (const [key, value] of formData.entries()) {
                 formDataObj[key] = value;
             }
-
-            postOrder(formDataObj);
+            payAmount(formDataObj);
         })
     }
 }

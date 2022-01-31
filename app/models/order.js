@@ -11,7 +11,9 @@ const orderSchema = new Schema(
     items: { type: Object, require: true },
     phone_number: { type: String, require: true },
     address: { type: String, default: "customer" },
-    payment_type: { type: String, default: "Cash On Delivery" },
+    paymetn_id: { type: String, default: null },
+    payment_type: { type: String, default: null },
+    payment_status: { type: Boolean, default: false },
     status: { type: String, default: "Placed" },
   },
   { timestamps: true }

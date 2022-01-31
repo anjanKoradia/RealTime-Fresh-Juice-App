@@ -47,7 +47,8 @@ function initRoutes(app) {
   app.post("/logout", authController().logout);
 
   // Customer Routes
-  app.post("/orders", auth, customerOrderController().store);
+  app.post("/order/razorpay", auth, customerOrderController().razorpay);
+  app.post("/order/razorpay/is-order-complete", auth, customerOrderController().store);
   app.get("/customer/orders", auth, customerOrderController().index);
   app.get("/customer/order/:id", auth, customerOrderController().showStauts);
 
