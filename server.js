@@ -9,14 +9,15 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const flash = require("express-flash");
 const MongoDbStore = require("connect-mongo");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.APP_PORT || 5000;
 const passport = require("passport");
 const Emitter = require("events");
 
 /* ---------------------------------------- 
   Database connection 
 ---------------------------------------- */
-const url = "mongodb://localhost/fresh_juice";
+const url = process.env.DB_URL;
+
 mongoose.connect(url).then(
   () => {
     console.log("Database connected...");
