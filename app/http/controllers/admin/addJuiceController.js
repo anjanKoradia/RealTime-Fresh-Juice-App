@@ -10,6 +10,8 @@ function addJuiceController() {
     },
 
     addJuice: (req, res, next) => {
+      console.log(req.body);
+
       handleMultipartData(req, res, async (err) => {
         if (err) {
           return err.message;

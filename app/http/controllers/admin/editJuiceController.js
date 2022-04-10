@@ -24,7 +24,7 @@ function editJuiceController() {
           },
         },
         { returnOriginal: false }
-      );
+      );  
 
       req.flash("success", "Details update successfully.");
 
