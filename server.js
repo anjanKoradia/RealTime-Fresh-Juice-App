@@ -16,12 +16,14 @@ const Emitter = require("events");
 /* ---------------------------------------- 
   Database connection 
 ---------------------------------------- */
-const url = "mongodb://localhost/fresh_juice";
+// const url = "mongodb://localhost/fresh_juice";
+const url = process.env.DB_URL;
 mongoose.connect(url).then(
   () => {
     console.log("Database connected...");
   },
   (err) => {
+    console.log(err);
     console.log("Connection failed...");
   }
 );
