@@ -3,7 +3,7 @@ const moment = require("moment");
 const Razorpay = require("razorpay")
 
 const razorPay = new Razorpay({
-  key_id: "rzp_test_P6nkgTUu6ZV0hy",
+  key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET
 })
 

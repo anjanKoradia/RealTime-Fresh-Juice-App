@@ -15,13 +15,13 @@ function checkPaymentStatus(paymentDetails) {
         if (res.data.status == "success") {
             setTimeout(() => {
                 window.location.href = "/customer/orders";
-            }, 1200);
+            }, 500);
         }
     }).catch((err) => {
         new Noty({
             theme: "metroui",
             type: "error",
-            text: err,
+            text: "Somthing went wrong. Try again",
             timeout: 1000,
         }).show();
     })
@@ -29,8 +29,17 @@ function checkPaymentStatus(paymentDetails) {
 
 function payAmount(data) {
     axios.post("/order/razorpay", data).then(res => {
+        if (res.data.status == "error") {
+            return new Noty({
+                theme: "metroui",
+                type: "error",
+                text: res.data.message,
+                timeout: 1000,
+            }).show();
+        }
+
         let options = {
-            "key": "rzp_test_P6nkgTUu6ZV0hy",
+            "key": process.env.RAZORPAY_KEY_ID,
             "amount": res.data.amount,
             "currency": "INR",
             "name": "Fresh Juice",
@@ -55,7 +64,7 @@ function payAmount(data) {
         new Noty({
             theme: "metroui",
             type: "error",
-            text: err,
+            text: "Somthing went wrong. Try again",
             timeout: 1000,
         }).show();
     })
